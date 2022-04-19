@@ -1,0 +1,73 @@
+@media screen and (max-width: 600px) {
+	.nice-select{max-width:40%;}
+	.inner-header .advanced-search .input-group button {top: -46px;}
+	.inner-header button {float:left!important;}
+	h2.title1 {font-size: 24px;margin-bottom: 23px;}
+	.features .card {margin-bottom: 10%;}
+	.hero-items.owl-carousel.owl-loaded.owl-drag {margin-top: -36%;margin-bottom: -27%;z-index: -999;}
+	.hero-items .owl-nav button[type=button].owl-prev {left: 68%;top: 36%;}
+	.hero-items .owl-nav button[type=button].owl-next {left: 79%;top: 36%;}
+	.has-search .form-control {padding-left: 18%!important;}
+	.artworks .nav-tabs {width: 100%!important;}
+	.product-list .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{height:50px!important;}
+.about-grid h2 {
+    font-size: 40px!important;}
+    h3.title4:after {top: 94%!important; }
+    .breacrumb-section {height: 424px!important;}
+    h1.text-color.font-weight-bold {
+    font-size: 40px;
+}
+.join-the-community h1 {
+    font-size: 43px;
+    
+}
+h1.title4 {
+    font-size: 43px!important;
+   
+}
+.form-class h4 {
+    font-size: 12px!important;
+    }
+    .grid-image {
+        margin-bottom: 15px;
+    position: relative!important;
+    top: 0%!important;
+}
+.mega-menu {
+    width: 100%!important;
+    background: #0c1923!important;
+    
+    margin-top: 2px!important;
+    margin-left: 0%!important;
+ }
+ .mega-menu h5{
+ color:#fff !important;
+     
+ }
+ 
+ .mean-nav {
+     
+     max-height:700px;
+     overflow:auto;
+ }
+ 
+ .center {
+  
+    margin-left: 20%;
+    
+}
+.advanced-search{
+    display:none;
+}
+
+.product-list{
+    margin-top:25px;
+}
+
+img.img-fluid.creator-image {
+    
+    width: 40px;
+    top: -40px !important;
+}
+
+}

@@ -1,0 +1,203 @@
+@media screen and (max-width: 600px) {
+    .history-buttons button.btn.btn-warning img {
+        left: 83% !important;
+        }
+    .history-buttons button.btn.btn-success img{left: 83% !important;}
+    img.img-fluid.creator-image{height:40px!important;width:40px!important;}
+	.nice-select{max-width:40%;}
+	.inner-header .advanced-search .input-group button {top: -46px;}
+	.inner-header button {float:left!important;}
+	h2.title1 {font-size: 24px;margin-bottom: 23px;}
+	.features .card {margin-bottom: 10%;}
+	.hero-items.owl-carousel.owl-loaded.owl-drag {margin-top: -10%;}
+	.hero-items .owl-nav button[type=button].owl-prev {left: 68%;top: 36%;}
+	.hero-items .owl-nav button[type=button].owl-next {left: 79%;top: 36%;}
+	.has-search .form-control {padding-left: 0%!important;}
+	.artworks .nav-tabs {width: 100%!important;  /*border-radius: 0px !important;*/}
+	.product-list .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{height:50px!important;}
+.about-grid h2 {
+    font-size: 40px!important;}
+    h3.title4:after {top: 94%!important; }
+    .breacrumb-section {height: 424px!important;}
+    h1.text-color.font-weight-bold {
+    font-size: 40px;
+}
+.product-list .nav-tabs .nav-link {
+    height: 35px!important;
+    line-height: 16px!important;
+}
+.product-list .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
+    height: 35px!important;
+    line-height: 16px!important;
+    /*padding: 9px !important;*/
+    text-align: center;
+}
+.join-the-community h1 {
+    font-size: 43px;
+    margin-top: 20px;
+    }
+
+h1.title4 {
+    font-size: 43px!important;
+   
+}
+.form-class h4 {
+    font-size: 12px!important;
+    }
+    .grid-image {
+        margin-bottom: 15px;
+    position: relative!important;
+    top: 0%!important;
+}
+.mega-menu {
+    width: 100%!important;
+    background: #0c1923!important;
+    
+    margin-top: 2px!important;
+    margin-left: 0%!important;
+ }
+ .mega-menu h5{
+ color:#fff !important;
+     
+ }
+ 
+ .mean-nav {
+     
+     max-height:700px;
+     overflow:auto;
+     top: 40px !important;
+ }
+ 
+ .center {
+  
+    margin-left: 20%;
+    
+}
+.advanced-search{
+    display:none;
+}
+
+.product-list{
+    margin-top:25px;
+}
+
+img.img-fluid.creator-image {
+    
+    width: 40px;
+    top: -40px !important;
+}
+.artworks .nav-tabs .nav-link.active {
+border-radius: 30px;
+margin: 2px;
+}
+.artworks .nav-tabs .nav-link.active:first-child {
+border-radius: 30px;
+}
+.artworks .nav-tabs .nav-link.active:last-child {
+border-radius: 30px;
+}
+.history-buttons button.btn.btn-warning{
+    width:100% !important;
+}
+.history-buttons button.btn.btn-success {
+
+     width:100% !important;
+}
+.spad {
+padding-top: 20px;
+padding-bottom: 0px;
+}
+.form-group.has-search {
+
+margin-top: 70px !important;
+}
+.verify-twitter i {
+    top: 89% !important;
+}
+.upload {
+    margin-top:20px;
+}
+.edit-profile{
+    margin-top: 90px;
+}
+.upload-image {
+    margin-top:20px;
+}
+.place-bid-left-section{
+    margin-top:80px;
+}
+.bids-list:first-child {
+    margin-top: 10%;
+}
+
+.topheader-button-list li {
+list-style: none;
+
+margin-right: 5px !important;
+position: relative;
+float: left;
+}
+
+.about-image {
+    margin-top: 90px;
+}
+}
+@media (min-width: 320px) and (max-width: 800px)
+{
+.custum-ul-li-design h1 
+{
+    margin-left: 0px !important;
+}
+.custum-ul-li-design ul
+{
+   padding-left: 0rem !important; 
+}
+.hexa-text-align
+{
+     vertical-align: middle; 
+     display: inline-block;
+     line-height: 2.5 !important;
+}
+.hexa-text-padding
+{
+    padding-top: 0px !important;
+}
+.community-section-background 
+{
+    background-position: 70% 5% !important;
+    background-size: 500px !important;
+}
+.web-view-creator-image 
+{
+    top: -15px !important;
+}
+.bids-list {
+     padding: 5% !important; 
+}
+.verify-twitter1 img {
+    width:15% !important;
+}
+}
+@media screen and (max-width:1200px){
+    section{
+        padding:15px 0 !important;
+    }
+    .about-info{
+        padding:0 5% !important;
+    }
+    .dark-mode header.header-section{
+        background: #141416;
+    }
+    .dark-mode .spinner{
+        background-color:#FCFCFD !important;
+    }
+}
+
+@media screen and (max-width:991px){
+    .react-tabs__tab{
+        padding:1px!important;
+    }
+    .right-price{
+        width:170px !important;
+    }
+}

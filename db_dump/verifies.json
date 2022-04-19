@@ -1,0 +1,2 @@
+{ "_id" : { "$oid" : "6102aef1ae2030a6750928a4" }, "twitter" : "asd", "status" : "success", "publicAddress" : "0xf320f631de88d66690a8f14e253d8c9350f25be7", "username" : "MoneyKicks", "__v" : 0 }
+{ "_id" : { "$oid" : "61c79e76f0cd3d0013460cd3" }, "twitter" : "https://twitter.com/intent/tweet?text=I%27m%20on%20KokoswapNFT%20%F0%9F%8C%90%0A%0A0x8512abb0c0350b2620979a5920b65998f0ab139a%0A%0A", "status" : "success", "publicAddress" : "0x8512abb0c0350b2620979a5920b65998f0ab139a", "username" : "asdasd", "__v" : 0 }

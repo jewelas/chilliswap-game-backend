@@ -1,0 +1,4122 @@
+{
+  "contractName": "IDigiplaza",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "bidder",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum IDigiplaza.CURRENCY",
+          "name": "currency",
+          "type": "uint8"
+        }
+      ],
+      "name": "Bid",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "collector",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "ClaimNft",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "price",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "endTime",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum IDigiplaza.CURRENCY",
+          "name": "currency",
+          "type": "uint8"
+        }
+      ],
+      "name": "ListOnAuction",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "artwork",
+          "type": "string"
+        }
+      ],
+      "name": "Mint",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "recipient",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "_metadata",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_artwork",
+          "type": "string"
+        }
+      ],
+      "name": "mintNFT",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_tokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_price",
+          "type": "uint256"
+        },
+        {
+          "internalType": "enum IDigiplaza.CURRENCY",
+          "name": "currency",
+          "type": "uint8"
+        }
+      ],
+      "name": "listOnAuction",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "bool",
+              "name": "active",
+              "type": "bool"
+            },
+            {
+              "internalType": "address",
+              "name": "creator",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "value",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "endTime",
+              "type": "uint256"
+            },
+            {
+              "internalType": "enum IDigiplaza.CURRENCY",
+              "name": "currency",
+              "type": "uint8"
+            }
+          ],
+          "internalType": "struct IDigiplaza.Auction",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "bid",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "bool",
+              "name": "active",
+              "type": "bool"
+            },
+            {
+              "internalType": "address",
+              "name": "creator",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "value",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "endTime",
+              "type": "uint256"
+            },
+            {
+              "internalType": "enum IDigiplaza.CURRENCY",
+              "name": "currency",
+              "type": "uint8"
+            }
+          ],
+          "internalType": "struct IDigiplaza.Auction",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_tokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "price",
+          "type": "uint256"
+        }
+      ],
+      "name": "bidToken",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "bool",
+              "name": "active",
+              "type": "bool"
+            },
+            {
+              "internalType": "address",
+              "name": "creator",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "value",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "endTime",
+              "type": "uint256"
+            },
+            {
+              "internalType": "enum IDigiplaza.CURRENCY",
+              "name": "currency",
+              "type": "uint8"
+            }
+          ],
+          "internalType": "struct IDigiplaza.Auction",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "claimNft",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_address",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_value",
+          "type": "uint256"
+        },
+        {
+          "internalType": "enum IDigiplaza.CURRENCY",
+          "name": "currency",
+          "type": "uint8"
+        }
+      ],
+      "name": "withdraw",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getTokenMetaData",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getAuction",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "bool",
+              "name": "active",
+              "type": "bool"
+            },
+            {
+              "internalType": "address",
+              "name": "creator",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "value",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "endTime",
+              "type": "uint256"
+            },
+            {
+              "internalType": "enum IDigiplaza.CURRENCY",
+              "name": "currency",
+              "type": "uint8"
+            }
+          ],
+          "internalType": "struct IDigiplaza.Auction",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "tokenAddress",
+          "type": "address"
+        }
+      ],
+      "name": "setTokenAddress",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "fee",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenFee",
+          "type": "uint256"
+        }
+      ],
+      "name": "setFee",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "fee",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenFee",
+          "type": "uint256"
+        }
+      ],
+      "name": "setNextBidPercentage",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.4+commit.c7e474f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"bidder\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"enum IDigiplaza.CURRENCY\",\"name\":\"currency\",\"type\":\"uint8\"}],\"name\":\"Bid\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"collector\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"ClaimNft\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"endTime\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"enum IDigiplaza.CURRENCY\",\"name\":\"currency\",\"type\":\"uint8\"}],\"name\":\"ListOnAuction\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"artwork\",\"type\":\"string\"}],\"name\":\"Mint\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_tokenId\",\"type\":\"uint256\"}],\"name\":\"bid\",\"outputs\":[{\"components\":[{\"internalType\":\"bool\",\"name\":\"active\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"endTime\",\"type\":\"uint256\"},{\"internalType\":\"enum IDigiplaza.CURRENCY\",\"name\":\"currency\",\"type\":\"uint8\"}],\"internalType\":\"struct IDigiplaza.Auction\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_tokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"}],\"name\":\"bidToken\",\"outputs\":[{\"components\":[{\"internalType\":\"bool\",\"name\":\"active\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"endTime\",\"type\":\"uint256\"},{\"internalType\":\"enum IDigiplaza.CURRENCY\",\"name\":\"currency\",\"type\":\"uint8\"}],\"internalType\":\"struct IDigiplaza.Auction\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_tokenId\",\"type\":\"uint256\"}],\"name\":\"claimNft\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_tokenId\",\"type\":\"uint256\"}],\"name\":\"getAuction\",\"outputs\":[{\"components\":[{\"internalType\":\"bool\",\"name\":\"active\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"endTime\",\"type\":\"uint256\"},{\"internalType\":\"enum IDigiplaza.CURRENCY\",\"name\":\"currency\",\"type\":\"uint8\"}],\"internalType\":\"struct IDigiplaza.Auction\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_tokenId\",\"type\":\"uint256\"}],\"name\":\"getTokenMetaData\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_tokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_price\",\"type\":\"uint256\"},{\"internalType\":\"enum IDigiplaza.CURRENCY\",\"name\":\"currency\",\"type\":\"uint8\"}],\"name\":\"listOnAuction\",\"outputs\":[{\"components\":[{\"internalType\":\"bool\",\"name\":\"active\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"endTime\",\"type\":\"uint256\"},{\"internalType\":\"enum IDigiplaza.CURRENCY\",\"name\":\"currency\",\"type\":\"uint8\"}],\"internalType\":\"struct IDigiplaza.Auction\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"_metadata\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_artwork\",\"type\":\"string\"}],\"name\":\"mintNFT\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"fee\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"tokenFee\",\"type\":\"uint256\"}],\"name\":\"setFee\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"fee\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"tokenFee\",\"type\":\"uint256\"}],\"name\":\"setNextBidPercentage\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"tokenAddress\",\"type\":\"address\"}],\"name\":\"setTokenAddress\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_address\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_value\",\"type\":\"uint256\"},{\"internalType\":\"enum IDigiplaza.CURRENCY\",\"name\":\"currency\",\"type\":\"uint8\"}],\"name\":\"withdraw\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/E/Workspace/Projects/Production/NFTs/Digiplaza/Digiplaza/contracts/contracts/IDigiplaza.sol\":\"IDigiplaza\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/E/Workspace/Projects/Production/NFTs/Digiplaza/Digiplaza/contracts/contracts/IDigiplaza.sol\":{\"keccak256\":\"0x0bbe2fb6613a3b6b70b18510f38e7995ad2608e8ecddf0a32bcb9026cfdeb42d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://dc76c7e43733b35e9a3ddf12eb6778e3b4079a5d73791206b25bbb7306a46d0d\",\"dweb:/ipfs/QmPmayyNRk1d7L9XeCpdcudQmRbH6y52oScbDP5YwvVGf2\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\r\n\r\npragma solidity ^0.8.0;\r\n\r\ninterface IDigiplaza {\r\n\r\n   enum CURRENCY{ ETH, TOKEN}\r\n\r\n\r\n    struct Auction {\r\n        bool active;\r\n        address creator;\r\n        address owner;\r\n        uint256 value;\r\n        uint256 endTime;\r\n        CURRENCY currency;\r\n    }\r\n\r\n\r\n    function mintNFT( address recipient, string memory _metadata,  string memory _artwork) external returns (uint256);\r\n\r\n    function listOnAuction(uint256 _tokenId, uint256 _price, CURRENCY currency) external returns (Auction memory);\r\n\r\n    function bid(uint256 _tokenId) external payable returns (Auction memory);\r\n\r\n    function bidToken(uint256 _tokenId, uint256 price) external returns (Auction memory);\r\n\r\n    function claimNft(uint256 _tokenId) external returns (uint256);\r\n\r\n    function withdraw(address _address, uint256 _value, CURRENCY currency) external ;\r\n\r\n    function getTokenMetaData(uint256 _tokenId) external view returns (string memory);\r\n\r\n    function getAuction(uint256 _tokenId) external view returns (Auction memory);\r\n\r\n    function setTokenAddress(address tokenAddress) external ;\r\n\r\n    function setFee(uint256 fee, uint256 tokenFee) external;\r\n\r\n    function setNextBidPercentage(uint256 fee, uint256 tokenFee) external;\r\n\r\n\r\n    event Mint(address indexed to, uint256  tokenId, string artwork);\r\n\r\n    event ListOnAuction(address indexed owner, uint256  tokenId,uint256 price, uint256 endTime, CURRENCY currency);\r\n\r\n    event Bid(address  bidder, uint256 indexed tokenId, uint256 value, CURRENCY currency);\r\n\r\n    event ClaimNft(address collector, uint256 indexed tokenId);\r\n\r\n}\r\n",
+  "sourcePath": "E:\\Workspace\\Projects\\Production\\NFTs\\Digiplaza\\Digiplaza\\contracts\\contracts\\IDigiplaza.sol",
+  "ast": {
+    "absolutePath": "/E/Workspace/Projects/Production/NFTs/Digiplaza/Digiplaza/contracts/contracts/IDigiplaza.sol",
+    "exportedSymbols": {
+      "IDigiplaza": [
+        996
+      ]
+    },
+    "id": 997,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 847,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "35:23:1"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 996,
+        "linearizedBaseContracts": [
+          996
+        ],
+        "name": "IDigiplaza",
+        "nameLocation": "72:10:1",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "IDigiplaza.CURRENCY",
+            "id": 850,
+            "members": [
+              {
+                "id": 848,
+                "name": "ETH",
+                "nameLocation": "106:3:1",
+                "nodeType": "EnumValue",
+                "src": "106:3:1"
+              },
+              {
+                "id": 849,
+                "name": "TOKEN",
+                "nameLocation": "111:5:1",
+                "nodeType": "EnumValue",
+                "src": "111:5:1"
+              }
+            ],
+            "name": "CURRENCY",
+            "nameLocation": "96:8:1",
+            "nodeType": "EnumDefinition",
+            "src": "91:26:1"
+          },
+          {
+            "canonicalName": "IDigiplaza.Auction",
+            "id": 864,
+            "members": [
+              {
+                "constant": false,
+                "id": 852,
+                "mutability": "mutable",
+                "name": "active",
+                "nameLocation": "158:6:1",
+                "nodeType": "VariableDeclaration",
+                "scope": 864,
+                "src": "153:11:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 851,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "153:4:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 854,
+                "mutability": "mutable",
+                "name": "creator",
+                "nameLocation": "183:7:1",
+                "nodeType": "VariableDeclaration",
+                "scope": 864,
+                "src": "175:15:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 853,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "175:7:1",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 856,
+                "mutability": "mutable",
+                "name": "owner",
+                "nameLocation": "209:5:1",
+                "nodeType": "VariableDeclaration",
+                "scope": 864,
+                "src": "201:13:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 855,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "201:7:1",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 858,
+                "mutability": "mutable",
+                "name": "value",
+                "nameLocation": "233:5:1",
+                "nodeType": "VariableDeclaration",
+                "scope": 864,
+                "src": "225:13:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 857,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "225:7:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 860,
+                "mutability": "mutable",
+                "name": "endTime",
+                "nameLocation": "257:7:1",
+                "nodeType": "VariableDeclaration",
+                "scope": 864,
+                "src": "249:15:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 859,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "249:7:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 863,
+                "mutability": "mutable",
+                "name": "currency",
+                "nameLocation": "284:8:1",
+                "nodeType": "VariableDeclaration",
+                "scope": 864,
+                "src": "275:17:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_enum$_CURRENCY_$850",
+                  "typeString": "enum IDigiplaza.CURRENCY"
+                },
+                "typeName": {
+                  "id": 862,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 861,
+                    "name": "CURRENCY",
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 850,
+                    "src": "275:8:1"
+                  },
+                  "referencedDeclaration": 850,
+                  "src": "275:8:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_CURRENCY_$850",
+                    "typeString": "enum IDigiplaza.CURRENCY"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Auction",
+            "nameLocation": "134:7:1",
+            "nodeType": "StructDefinition",
+            "scope": 996,
+            "src": "127:173:1",
+            "visibility": "public"
+          },
+          {
+            "functionSelector": "a3ee38ae",
+            "id": 875,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "mintNFT",
+            "nameLocation": "319:7:1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 871,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 866,
+                  "mutability": "mutable",
+                  "name": "recipient",
+                  "nameLocation": "336:9:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 875,
+                  "src": "328:17:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 865,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "328:7:1",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 868,
+                  "mutability": "mutable",
+                  "name": "_metadata",
+                  "nameLocation": "361:9:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 875,
+                  "src": "347:23:1",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 867,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "347:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 870,
+                  "mutability": "mutable",
+                  "name": "_artwork",
+                  "nameLocation": "387:8:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 875,
+                  "src": "373:22:1",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 869,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "373:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "326:70:1"
+            },
+            "returnParameters": {
+              "id": 874,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 873,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 875,
+                  "src": "415:7:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 872,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "415:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "414:9:1"
+            },
+            "scope": 996,
+            "src": "310:114:1",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "c0368fe8",
+            "id": 888,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "listOnAuction",
+            "nameLocation": "441:13:1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 883,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 877,
+                  "mutability": "mutable",
+                  "name": "_tokenId",
+                  "nameLocation": "463:8:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 888,
+                  "src": "455:16:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 876,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "455:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 879,
+                  "mutability": "mutable",
+                  "name": "_price",
+                  "nameLocation": "481:6:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 888,
+                  "src": "473:14:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 878,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "473:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 882,
+                  "mutability": "mutable",
+                  "name": "currency",
+                  "nameLocation": "498:8:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 888,
+                  "src": "489:17:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_CURRENCY_$850",
+                    "typeString": "enum IDigiplaza.CURRENCY"
+                  },
+                  "typeName": {
+                    "id": 881,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 880,
+                      "name": "CURRENCY",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 850,
+                      "src": "489:8:1"
+                    },
+                    "referencedDeclaration": 850,
+                    "src": "489:8:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_CURRENCY_$850",
+                      "typeString": "enum IDigiplaza.CURRENCY"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "454:53:1"
+            },
+            "returnParameters": {
+              "id": 887,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 886,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 888,
+                  "src": "526:14:1",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Auction_$864_memory_ptr",
+                    "typeString": "struct IDigiplaza.Auction"
+                  },
+                  "typeName": {
+                    "id": 885,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 884,
+                      "name": "Auction",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 864,
+                      "src": "526:7:1"
+                    },
+                    "referencedDeclaration": 864,
+                    "src": "526:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Auction_$864_storage_ptr",
+                      "typeString": "struct IDigiplaza.Auction"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "525:16:1"
+            },
+            "scope": 996,
+            "src": "432:110:1",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "454a2ab3",
+            "id": 896,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "bid",
+            "nameLocation": "559:3:1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 891,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 890,
+                  "mutability": "mutable",
+                  "name": "_tokenId",
+                  "nameLocation": "571:8:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 896,
+                  "src": "563:16:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 889,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "563:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "562:18:1"
+            },
+            "returnParameters": {
+              "id": 895,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 894,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 896,
+                  "src": "607:14:1",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Auction_$864_memory_ptr",
+                    "typeString": "struct IDigiplaza.Auction"
+                  },
+                  "typeName": {
+                    "id": 893,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 892,
+                      "name": "Auction",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 864,
+                      "src": "607:7:1"
+                    },
+                    "referencedDeclaration": 864,
+                    "src": "607:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Auction_$864_storage_ptr",
+                      "typeString": "struct IDigiplaza.Auction"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "606:16:1"
+            },
+            "scope": 996,
+            "src": "550:73:1",
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "bb39694b",
+            "id": 906,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "bidToken",
+            "nameLocation": "640:8:1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 901,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 898,
+                  "mutability": "mutable",
+                  "name": "_tokenId",
+                  "nameLocation": "657:8:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 906,
+                  "src": "649:16:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 897,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "649:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 900,
+                  "mutability": "mutable",
+                  "name": "price",
+                  "nameLocation": "675:5:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 906,
+                  "src": "667:13:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 899,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "667:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "648:33:1"
+            },
+            "returnParameters": {
+              "id": 905,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 904,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 906,
+                  "src": "700:14:1",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Auction_$864_memory_ptr",
+                    "typeString": "struct IDigiplaza.Auction"
+                  },
+                  "typeName": {
+                    "id": 903,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 902,
+                      "name": "Auction",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 864,
+                      "src": "700:7:1"
+                    },
+                    "referencedDeclaration": 864,
+                    "src": "700:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Auction_$864_storage_ptr",
+                      "typeString": "struct IDigiplaza.Auction"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "699:16:1"
+            },
+            "scope": 996,
+            "src": "631:85:1",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "2ec09d39",
+            "id": 913,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "claimNft",
+            "nameLocation": "733:8:1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 909,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 908,
+                  "mutability": "mutable",
+                  "name": "_tokenId",
+                  "nameLocation": "750:8:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 913,
+                  "src": "742:16:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 907,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "742:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "741:18:1"
+            },
+            "returnParameters": {
+              "id": 912,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 911,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 913,
+                  "src": "778:7:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 910,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "778:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "777:9:1"
+            },
+            "scope": 996,
+            "src": "724:63:1",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "2892a977",
+            "id": 923,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "withdraw",
+            "nameLocation": "804:8:1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 921,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 915,
+                  "mutability": "mutable",
+                  "name": "_address",
+                  "nameLocation": "821:8:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 923,
+                  "src": "813:16:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 914,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "813:7:1",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 917,
+                  "mutability": "mutable",
+                  "name": "_value",
+                  "nameLocation": "839:6:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 923,
+                  "src": "831:14:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 916,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "831:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 920,
+                  "mutability": "mutable",
+                  "name": "currency",
+                  "nameLocation": "856:8:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 923,
+                  "src": "847:17:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_CURRENCY_$850",
+                    "typeString": "enum IDigiplaza.CURRENCY"
+                  },
+                  "typeName": {
+                    "id": 919,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 918,
+                      "name": "CURRENCY",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 850,
+                      "src": "847:8:1"
+                    },
+                    "referencedDeclaration": 850,
+                    "src": "847:8:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_CURRENCY_$850",
+                      "typeString": "enum IDigiplaza.CURRENCY"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "812:53:1"
+            },
+            "returnParameters": {
+              "id": 922,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "875:0:1"
+            },
+            "scope": 996,
+            "src": "795:81:1",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "67c623cf",
+            "id": 930,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getTokenMetaData",
+            "nameLocation": "893:16:1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 926,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 925,
+                  "mutability": "mutable",
+                  "name": "_tokenId",
+                  "nameLocation": "918:8:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 930,
+                  "src": "910:16:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 924,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "910:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "909:18:1"
+            },
+            "returnParameters": {
+              "id": 929,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 928,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 930,
+                  "src": "951:13:1",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 927,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "951:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "950:15:1"
+            },
+            "scope": 996,
+            "src": "884:82:1",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "78bd7935",
+            "id": 938,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getAuction",
+            "nameLocation": "983:10:1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 933,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 932,
+                  "mutability": "mutable",
+                  "name": "_tokenId",
+                  "nameLocation": "1002:8:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 938,
+                  "src": "994:16:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 931,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "994:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "993:18:1"
+            },
+            "returnParameters": {
+              "id": 937,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 936,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 938,
+                  "src": "1035:14:1",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Auction_$864_memory_ptr",
+                    "typeString": "struct IDigiplaza.Auction"
+                  },
+                  "typeName": {
+                    "id": 935,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 934,
+                      "name": "Auction",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 864,
+                      "src": "1035:7:1"
+                    },
+                    "referencedDeclaration": 864,
+                    "src": "1035:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Auction_$864_storage_ptr",
+                      "typeString": "struct IDigiplaza.Auction"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1034:16:1"
+            },
+            "scope": 996,
+            "src": "974:77:1",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "26a4e8d2",
+            "id": 943,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setTokenAddress",
+            "nameLocation": "1068:15:1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 941,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 940,
+                  "mutability": "mutable",
+                  "name": "tokenAddress",
+                  "nameLocation": "1092:12:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 943,
+                  "src": "1084:20:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 939,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1084:7:1",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1083:22:1"
+            },
+            "returnParameters": {
+              "id": 942,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1115:0:1"
+            },
+            "scope": 996,
+            "src": "1059:57:1",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "52f7c988",
+            "id": 950,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setFee",
+            "nameLocation": "1133:6:1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 948,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 945,
+                  "mutability": "mutable",
+                  "name": "fee",
+                  "nameLocation": "1148:3:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 950,
+                  "src": "1140:11:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 944,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1140:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 947,
+                  "mutability": "mutable",
+                  "name": "tokenFee",
+                  "nameLocation": "1161:8:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 950,
+                  "src": "1153:16:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 946,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1153:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1139:31:1"
+            },
+            "returnParameters": {
+              "id": 949,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1179:0:1"
+            },
+            "scope": 996,
+            "src": "1124:56:1",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "e76abfff",
+            "id": 957,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setNextBidPercentage",
+            "nameLocation": "1197:20:1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 955,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 952,
+                  "mutability": "mutable",
+                  "name": "fee",
+                  "nameLocation": "1226:3:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 957,
+                  "src": "1218:11:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 951,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1218:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 954,
+                  "mutability": "mutable",
+                  "name": "tokenFee",
+                  "nameLocation": "1239:8:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 957,
+                  "src": "1231:16:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 953,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1231:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1217:31:1"
+            },
+            "returnParameters": {
+              "id": 956,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1257:0:1"
+            },
+            "scope": 996,
+            "src": "1188:70:1",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "anonymous": false,
+            "id": 965,
+            "name": "Mint",
+            "nameLocation": "1274:4:1",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 964,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 959,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "to",
+                  "nameLocation": "1295:2:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 965,
+                  "src": "1279:18:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 958,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1279:7:1",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 961,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "tokenId",
+                  "nameLocation": "1308:7:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 965,
+                  "src": "1299:16:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 960,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1299:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 963,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "artwork",
+                  "nameLocation": "1324:7:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 965,
+                  "src": "1317:14:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 962,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1317:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1278:54:1"
+            },
+            "src": "1268:65:1"
+          },
+          {
+            "anonymous": false,
+            "id": 978,
+            "name": "ListOnAuction",
+            "nameLocation": "1347:13:1",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 977,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 967,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "owner",
+                  "nameLocation": "1377:5:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 978,
+                  "src": "1361:21:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 966,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1361:7:1",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 969,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "tokenId",
+                  "nameLocation": "1393:7:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 978,
+                  "src": "1384:16:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 968,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1384:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 971,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "price",
+                  "nameLocation": "1409:5:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 978,
+                  "src": "1401:13:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 970,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1401:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 973,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "endTime",
+                  "nameLocation": "1424:7:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 978,
+                  "src": "1416:15:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 972,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1416:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 976,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "currency",
+                  "nameLocation": "1442:8:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 978,
+                  "src": "1433:17:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_CURRENCY_$850",
+                    "typeString": "enum IDigiplaza.CURRENCY"
+                  },
+                  "typeName": {
+                    "id": 975,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 974,
+                      "name": "CURRENCY",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 850,
+                      "src": "1433:8:1"
+                    },
+                    "referencedDeclaration": 850,
+                    "src": "1433:8:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_CURRENCY_$850",
+                      "typeString": "enum IDigiplaza.CURRENCY"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1360:91:1"
+            },
+            "src": "1341:111:1"
+          },
+          {
+            "anonymous": false,
+            "id": 989,
+            "name": "Bid",
+            "nameLocation": "1466:3:1",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 988,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 980,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "bidder",
+                  "nameLocation": "1479:6:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 989,
+                  "src": "1470:15:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 979,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1470:7:1",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 982,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "tokenId",
+                  "nameLocation": "1503:7:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 989,
+                  "src": "1487:23:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 981,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1487:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 984,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "value",
+                  "nameLocation": "1520:5:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 989,
+                  "src": "1512:13:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 983,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1512:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 987,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "currency",
+                  "nameLocation": "1536:8:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 989,
+                  "src": "1527:17:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_CURRENCY_$850",
+                    "typeString": "enum IDigiplaza.CURRENCY"
+                  },
+                  "typeName": {
+                    "id": 986,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 985,
+                      "name": "CURRENCY",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 850,
+                      "src": "1527:8:1"
+                    },
+                    "referencedDeclaration": 850,
+                    "src": "1527:8:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_CURRENCY_$850",
+                      "typeString": "enum IDigiplaza.CURRENCY"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1469:76:1"
+            },
+            "src": "1460:86:1"
+          },
+          {
+            "anonymous": false,
+            "id": 995,
+            "name": "ClaimNft",
+            "nameLocation": "1560:8:1",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 994,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 991,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "collector",
+                  "nameLocation": "1577:9:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 995,
+                  "src": "1569:17:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 990,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1569:7:1",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 993,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "tokenId",
+                  "nameLocation": "1604:7:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 995,
+                  "src": "1588:23:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 992,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1588:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1568:44:1"
+            },
+            "src": "1554:59:1"
+          }
+        ],
+        "scope": 997,
+        "src": "62:1556:1",
+        "usedErrors": []
+      }
+    ],
+    "src": "35:1585:1"
+  },
+  "legacyAST": {
+    "absolutePath": "/E/Workspace/Projects/Production/NFTs/Digiplaza/Digiplaza/contracts/contracts/IDigiplaza.sol",
+    "exportedSymbols": {
+      "IDigiplaza": [
+        996
+      ]
+    },
+    "id": 997,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 847,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "35:23:1"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 996,
+        "linearizedBaseContracts": [
+          996
+        ],
+        "name": "IDigiplaza",
+        "nameLocation": "72:10:1",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "IDigiplaza.CURRENCY",
+            "id": 850,
+            "members": [
+              {
+                "id": 848,
+                "name": "ETH",
+                "nameLocation": "106:3:1",
+                "nodeType": "EnumValue",
+                "src": "106:3:1"
+              },
+              {
+                "id": 849,
+                "name": "TOKEN",
+                "nameLocation": "111:5:1",
+                "nodeType": "EnumValue",
+                "src": "111:5:1"
+              }
+            ],
+            "name": "CURRENCY",
+            "nameLocation": "96:8:1",
+            "nodeType": "EnumDefinition",
+            "src": "91:26:1"
+          },
+          {
+            "canonicalName": "IDigiplaza.Auction",
+            "id": 864,
+            "members": [
+              {
+                "constant": false,
+                "id": 852,
+                "mutability": "mutable",
+                "name": "active",
+                "nameLocation": "158:6:1",
+                "nodeType": "VariableDeclaration",
+                "scope": 864,
+                "src": "153:11:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 851,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "153:4:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 854,
+                "mutability": "mutable",
+                "name": "creator",
+                "nameLocation": "183:7:1",
+                "nodeType": "VariableDeclaration",
+                "scope": 864,
+                "src": "175:15:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 853,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "175:7:1",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 856,
+                "mutability": "mutable",
+                "name": "owner",
+                "nameLocation": "209:5:1",
+                "nodeType": "VariableDeclaration",
+                "scope": 864,
+                "src": "201:13:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 855,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "201:7:1",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 858,
+                "mutability": "mutable",
+                "name": "value",
+                "nameLocation": "233:5:1",
+                "nodeType": "VariableDeclaration",
+                "scope": 864,
+                "src": "225:13:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 857,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "225:7:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 860,
+                "mutability": "mutable",
+                "name": "endTime",
+                "nameLocation": "257:7:1",
+                "nodeType": "VariableDeclaration",
+                "scope": 864,
+                "src": "249:15:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 859,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "249:7:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 863,
+                "mutability": "mutable",
+                "name": "currency",
+                "nameLocation": "284:8:1",
+                "nodeType": "VariableDeclaration",
+                "scope": 864,
+                "src": "275:17:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_enum$_CURRENCY_$850",
+                  "typeString": "enum IDigiplaza.CURRENCY"
+                },
+                "typeName": {
+                  "id": 862,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 861,
+                    "name": "CURRENCY",
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 850,
+                    "src": "275:8:1"
+                  },
+                  "referencedDeclaration": 850,
+                  "src": "275:8:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_CURRENCY_$850",
+                    "typeString": "enum IDigiplaza.CURRENCY"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Auction",
+            "nameLocation": "134:7:1",
+            "nodeType": "StructDefinition",
+            "scope": 996,
+            "src": "127:173:1",
+            "visibility": "public"
+          },
+          {
+            "functionSelector": "a3ee38ae",
+            "id": 875,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "mintNFT",
+            "nameLocation": "319:7:1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 871,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 866,
+                  "mutability": "mutable",
+                  "name": "recipient",
+                  "nameLocation": "336:9:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 875,
+                  "src": "328:17:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 865,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "328:7:1",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 868,
+                  "mutability": "mutable",
+                  "name": "_metadata",
+                  "nameLocation": "361:9:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 875,
+                  "src": "347:23:1",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 867,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "347:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 870,
+                  "mutability": "mutable",
+                  "name": "_artwork",
+                  "nameLocation": "387:8:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 875,
+                  "src": "373:22:1",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 869,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "373:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "326:70:1"
+            },
+            "returnParameters": {
+              "id": 874,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 873,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 875,
+                  "src": "415:7:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 872,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "415:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "414:9:1"
+            },
+            "scope": 996,
+            "src": "310:114:1",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "c0368fe8",
+            "id": 888,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "listOnAuction",
+            "nameLocation": "441:13:1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 883,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 877,
+                  "mutability": "mutable",
+                  "name": "_tokenId",
+                  "nameLocation": "463:8:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 888,
+                  "src": "455:16:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 876,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "455:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 879,
+                  "mutability": "mutable",
+                  "name": "_price",
+                  "nameLocation": "481:6:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 888,
+                  "src": "473:14:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 878,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "473:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 882,
+                  "mutability": "mutable",
+                  "name": "currency",
+                  "nameLocation": "498:8:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 888,
+                  "src": "489:17:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_CURRENCY_$850",
+                    "typeString": "enum IDigiplaza.CURRENCY"
+                  },
+                  "typeName": {
+                    "id": 881,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 880,
+                      "name": "CURRENCY",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 850,
+                      "src": "489:8:1"
+                    },
+                    "referencedDeclaration": 850,
+                    "src": "489:8:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_CURRENCY_$850",
+                      "typeString": "enum IDigiplaza.CURRENCY"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "454:53:1"
+            },
+            "returnParameters": {
+              "id": 887,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 886,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 888,
+                  "src": "526:14:1",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Auction_$864_memory_ptr",
+                    "typeString": "struct IDigiplaza.Auction"
+                  },
+                  "typeName": {
+                    "id": 885,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 884,
+                      "name": "Auction",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 864,
+                      "src": "526:7:1"
+                    },
+                    "referencedDeclaration": 864,
+                    "src": "526:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Auction_$864_storage_ptr",
+                      "typeString": "struct IDigiplaza.Auction"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "525:16:1"
+            },
+            "scope": 996,
+            "src": "432:110:1",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "454a2ab3",
+            "id": 896,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "bid",
+            "nameLocation": "559:3:1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 891,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 890,
+                  "mutability": "mutable",
+                  "name": "_tokenId",
+                  "nameLocation": "571:8:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 896,
+                  "src": "563:16:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 889,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "563:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "562:18:1"
+            },
+            "returnParameters": {
+              "id": 895,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 894,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 896,
+                  "src": "607:14:1",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Auction_$864_memory_ptr",
+                    "typeString": "struct IDigiplaza.Auction"
+                  },
+                  "typeName": {
+                    "id": 893,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 892,
+                      "name": "Auction",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 864,
+                      "src": "607:7:1"
+                    },
+                    "referencedDeclaration": 864,
+                    "src": "607:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Auction_$864_storage_ptr",
+                      "typeString": "struct IDigiplaza.Auction"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "606:16:1"
+            },
+            "scope": 996,
+            "src": "550:73:1",
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "bb39694b",
+            "id": 906,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "bidToken",
+            "nameLocation": "640:8:1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 901,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 898,
+                  "mutability": "mutable",
+                  "name": "_tokenId",
+                  "nameLocation": "657:8:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 906,
+                  "src": "649:16:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 897,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "649:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 900,
+                  "mutability": "mutable",
+                  "name": "price",
+                  "nameLocation": "675:5:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 906,
+                  "src": "667:13:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 899,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "667:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "648:33:1"
+            },
+            "returnParameters": {
+              "id": 905,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 904,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 906,
+                  "src": "700:14:1",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Auction_$864_memory_ptr",
+                    "typeString": "struct IDigiplaza.Auction"
+                  },
+                  "typeName": {
+                    "id": 903,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 902,
+                      "name": "Auction",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 864,
+                      "src": "700:7:1"
+                    },
+                    "referencedDeclaration": 864,
+                    "src": "700:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Auction_$864_storage_ptr",
+                      "typeString": "struct IDigiplaza.Auction"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "699:16:1"
+            },
+            "scope": 996,
+            "src": "631:85:1",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "2ec09d39",
+            "id": 913,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "claimNft",
+            "nameLocation": "733:8:1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 909,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 908,
+                  "mutability": "mutable",
+                  "name": "_tokenId",
+                  "nameLocation": "750:8:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 913,
+                  "src": "742:16:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 907,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "742:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "741:18:1"
+            },
+            "returnParameters": {
+              "id": 912,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 911,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 913,
+                  "src": "778:7:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 910,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "778:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "777:9:1"
+            },
+            "scope": 996,
+            "src": "724:63:1",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "2892a977",
+            "id": 923,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "withdraw",
+            "nameLocation": "804:8:1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 921,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 915,
+                  "mutability": "mutable",
+                  "name": "_address",
+                  "nameLocation": "821:8:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 923,
+                  "src": "813:16:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 914,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "813:7:1",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 917,
+                  "mutability": "mutable",
+                  "name": "_value",
+                  "nameLocation": "839:6:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 923,
+                  "src": "831:14:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 916,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "831:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 920,
+                  "mutability": "mutable",
+                  "name": "currency",
+                  "nameLocation": "856:8:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 923,
+                  "src": "847:17:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_CURRENCY_$850",
+                    "typeString": "enum IDigiplaza.CURRENCY"
+                  },
+                  "typeName": {
+                    "id": 919,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 918,
+                      "name": "CURRENCY",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 850,
+                      "src": "847:8:1"
+                    },
+                    "referencedDeclaration": 850,
+                    "src": "847:8:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_CURRENCY_$850",
+                      "typeString": "enum IDigiplaza.CURRENCY"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "812:53:1"
+            },
+            "returnParameters": {
+              "id": 922,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "875:0:1"
+            },
+            "scope": 996,
+            "src": "795:81:1",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "67c623cf",
+            "id": 930,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getTokenMetaData",
+            "nameLocation": "893:16:1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 926,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 925,
+                  "mutability": "mutable",
+                  "name": "_tokenId",
+                  "nameLocation": "918:8:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 930,
+                  "src": "910:16:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 924,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "910:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "909:18:1"
+            },
+            "returnParameters": {
+              "id": 929,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 928,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 930,
+                  "src": "951:13:1",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 927,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "951:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "950:15:1"
+            },
+            "scope": 996,
+            "src": "884:82:1",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "78bd7935",
+            "id": 938,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getAuction",
+            "nameLocation": "983:10:1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 933,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 932,
+                  "mutability": "mutable",
+                  "name": "_tokenId",
+                  "nameLocation": "1002:8:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 938,
+                  "src": "994:16:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 931,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "994:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "993:18:1"
+            },
+            "returnParameters": {
+              "id": 937,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 936,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 938,
+                  "src": "1035:14:1",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Auction_$864_memory_ptr",
+                    "typeString": "struct IDigiplaza.Auction"
+                  },
+                  "typeName": {
+                    "id": 935,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 934,
+                      "name": "Auction",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 864,
+                      "src": "1035:7:1"
+                    },
+                    "referencedDeclaration": 864,
+                    "src": "1035:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Auction_$864_storage_ptr",
+                      "typeString": "struct IDigiplaza.Auction"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1034:16:1"
+            },
+            "scope": 996,
+            "src": "974:77:1",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "26a4e8d2",
+            "id": 943,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setTokenAddress",
+            "nameLocation": "1068:15:1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 941,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 940,
+                  "mutability": "mutable",
+                  "name": "tokenAddress",
+                  "nameLocation": "1092:12:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 943,
+                  "src": "1084:20:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 939,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1084:7:1",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1083:22:1"
+            },
+            "returnParameters": {
+              "id": 942,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1115:0:1"
+            },
+            "scope": 996,
+            "src": "1059:57:1",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "52f7c988",
+            "id": 950,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setFee",
+            "nameLocation": "1133:6:1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 948,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 945,
+                  "mutability": "mutable",
+                  "name": "fee",
+                  "nameLocation": "1148:3:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 950,
+                  "src": "1140:11:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 944,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1140:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 947,
+                  "mutability": "mutable",
+                  "name": "tokenFee",
+                  "nameLocation": "1161:8:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 950,
+                  "src": "1153:16:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 946,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1153:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1139:31:1"
+            },
+            "returnParameters": {
+              "id": 949,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1179:0:1"
+            },
+            "scope": 996,
+            "src": "1124:56:1",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "e76abfff",
+            "id": 957,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setNextBidPercentage",
+            "nameLocation": "1197:20:1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 955,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 952,
+                  "mutability": "mutable",
+                  "name": "fee",
+                  "nameLocation": "1226:3:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 957,
+                  "src": "1218:11:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 951,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1218:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 954,
+                  "mutability": "mutable",
+                  "name": "tokenFee",
+                  "nameLocation": "1239:8:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 957,
+                  "src": "1231:16:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 953,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1231:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1217:31:1"
+            },
+            "returnParameters": {
+              "id": 956,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1257:0:1"
+            },
+            "scope": 996,
+            "src": "1188:70:1",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "anonymous": false,
+            "id": 965,
+            "name": "Mint",
+            "nameLocation": "1274:4:1",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 964,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 959,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "to",
+                  "nameLocation": "1295:2:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 965,
+                  "src": "1279:18:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 958,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1279:7:1",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 961,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "tokenId",
+                  "nameLocation": "1308:7:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 965,
+                  "src": "1299:16:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 960,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1299:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 963,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "artwork",
+                  "nameLocation": "1324:7:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 965,
+                  "src": "1317:14:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 962,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1317:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1278:54:1"
+            },
+            "src": "1268:65:1"
+          },
+          {
+            "anonymous": false,
+            "id": 978,
+            "name": "ListOnAuction",
+            "nameLocation": "1347:13:1",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 977,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 967,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "owner",
+                  "nameLocation": "1377:5:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 978,
+                  "src": "1361:21:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 966,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1361:7:1",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 969,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "tokenId",
+                  "nameLocation": "1393:7:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 978,
+                  "src": "1384:16:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 968,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1384:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 971,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "price",
+                  "nameLocation": "1409:5:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 978,
+                  "src": "1401:13:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 970,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1401:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 973,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "endTime",
+                  "nameLocation": "1424:7:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 978,
+                  "src": "1416:15:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 972,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1416:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 976,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "currency",
+                  "nameLocation": "1442:8:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 978,
+                  "src": "1433:17:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_CURRENCY_$850",
+                    "typeString": "enum IDigiplaza.CURRENCY"
+                  },
+                  "typeName": {
+                    "id": 975,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 974,
+                      "name": "CURRENCY",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 850,
+                      "src": "1433:8:1"
+                    },
+                    "referencedDeclaration": 850,
+                    "src": "1433:8:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_CURRENCY_$850",
+                      "typeString": "enum IDigiplaza.CURRENCY"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1360:91:1"
+            },
+            "src": "1341:111:1"
+          },
+          {
+            "anonymous": false,
+            "id": 989,
+            "name": "Bid",
+            "nameLocation": "1466:3:1",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 988,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 980,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "bidder",
+                  "nameLocation": "1479:6:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 989,
+                  "src": "1470:15:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 979,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1470:7:1",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 982,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "tokenId",
+                  "nameLocation": "1503:7:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 989,
+                  "src": "1487:23:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 981,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1487:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 984,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "value",
+                  "nameLocation": "1520:5:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 989,
+                  "src": "1512:13:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 983,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1512:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 987,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "currency",
+                  "nameLocation": "1536:8:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 989,
+                  "src": "1527:17:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_CURRENCY_$850",
+                    "typeString": "enum IDigiplaza.CURRENCY"
+                  },
+                  "typeName": {
+                    "id": 986,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 985,
+                      "name": "CURRENCY",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 850,
+                      "src": "1527:8:1"
+                    },
+                    "referencedDeclaration": 850,
+                    "src": "1527:8:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_CURRENCY_$850",
+                      "typeString": "enum IDigiplaza.CURRENCY"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1469:76:1"
+            },
+            "src": "1460:86:1"
+          },
+          {
+            "anonymous": false,
+            "id": 995,
+            "name": "ClaimNft",
+            "nameLocation": "1560:8:1",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 994,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 991,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "collector",
+                  "nameLocation": "1577:9:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 995,
+                  "src": "1569:17:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 990,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1569:7:1",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 993,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "tokenId",
+                  "nameLocation": "1604:7:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 995,
+                  "src": "1588:23:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 992,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1588:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1568:44:1"
+            },
+            "src": "1554:59:1"
+          }
+        ],
+        "scope": 997,
+        "src": "62:1556:1",
+        "usedErrors": []
+      }
+    ],
+    "src": "35:1585:1"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.4+commit.c7e474f2.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.4",
+  "updatedAt": "2021-04-29T14:48:09.757Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

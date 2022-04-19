@@ -1,0 +1,1 @@
+{ "_id" : { "$oid" : "60b9737cc5b57f4ba8c08118" }, "category" : [ { "name" : "Celebrity" }, { "name" : "Sports" }, { "name" : "influencer" } ], "__v" : 8 }
