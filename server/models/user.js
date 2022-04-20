@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const Joi = require('joi')
 
 
 const userSchema = new mongoose.Schema({
@@ -9,67 +10,44 @@ const userSchema = new mongoose.Schema({
         type: String,
         unique: true
     },
+    email: {
+        type: String,
+        unique :true
+    },
     username: {
         type: String,
+        unique :true
     },
-    fullname: {
-        type: String
-    },
-    email: {
-        type: String
-    },
-    bio: {
-        type: String
-    },
-    mobile: {
-        type: String
-    },
-    role:{
-        type: String
-    },
-    coverImg:{
-        type: String
-    },
-    avatar:{
-        type: String
-    },
-    instagram:{
-        type: String
-    },
-    facebook:{
-        type: String
-    },
-    youtube:{
-        type: String
-    },
-    tiktok:{
-        type: String
-    },
-    following: {
-        type: []
-    },
-    followers:{
-        type: []
-    },
-    rank:{
-        type: Number,
-        default: 100
-    },
-    coverImg:{
-        type: String
-    },
-    document:{
-        type: String
-    },
-    verifyTwitter:{
-        type: Boolean,
-        default: false
-    },
-    verifyinstagram:{
-        type: Boolean,
-        default: false
-    }
+    // password: {
+    //     type: String 
+    // }
 
 
 })
-module.exports = mongoose.model("User", userSchema)
+
+const User = mongoose.model('user', userSchema)//table
+
+const register = (user) => { //register validations
+    const schema = Joi.object({
+      email: Joi.string().email().min(5).max(500).required(),
+      password: Joi.string().min(8).max(1024).required(),
+      username: Joi.string().min(8).max(1024).required(),
+      publicAddress: Joi.string().required(),
+      signature: Joi.string(),
+    })
+    return schema.validate(user)
+  }
+
+  const login = (user) => { //register validations
+    const schema = Joi.object({
+    //   email: Joi.string().email().min(5).max(500).required(),
+    //   password: Joi.string().min(8).max(1024).required(),
+    //   username: Joi.string().min(8).max(1024).required(),
+    publicAddress: Joi.string().required(),
+    signature: Joi.string().required(),
+
+
+    })
+    return schema.validate(user)
+  }
+module.exports = {User, register, login}

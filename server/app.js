@@ -31,15 +31,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/users',require('./routes/user'))
 app.use('/api/auth',require('./routes/auth'))
-app.use('/api/artwork',require('./routes/artwork'))
 app.use('/api/setting',require('./routes/setting'))
 
-require('./events/transfer')
-//require('./events/find')
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-})
 
 
 app.use((req, res) => {
