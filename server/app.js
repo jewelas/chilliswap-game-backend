@@ -5,14 +5,7 @@ const path = require('path')
 require('dotenv').config()
 const rateLimit = require("express-rate-limit");
 
-
 require('./service/mongoose')
-
-
-// Enable if you're behind a reverse proxy (Heroku, Bluemix, AWS ELB, Nginx, etc)
-// see https://expressjs.com/en/guide/behind-proxies.html
-// app.set('trust proxy', 1);
-
 const limiter = rateLimit({
   windowMs: 1 * 60 * 1000, // 1 minutes
   max: 100 // limit each IP to 100 requests per windowMs
@@ -26,16 +19,12 @@ app.use(limiter);
 
 app.use(cors())
 app.use(express.json())
-app.use(express.static(path.join(__dirname, 'public')));
-
 
 app.use('/api/users',require('./routes/user.routes'))
 app.use('/api/auth',require('./routes/auth.routes'))
 app.use('/api/setting',require('./routes/setting'))
 app.use('/api/character',require('./routes/character.router'))
 app.use('/api/tournament',require('./routes/tournament.router'))
-
-
 
 
 app.use((req, res) => {
