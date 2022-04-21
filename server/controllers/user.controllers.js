@@ -6,12 +6,14 @@ const WAValidator = require('public-address-validator');
 exports.getUser = async (req, res, next) => {
   try {
     const publicAddress = req.params.publicAddress.toLowerCase()
-    if(publicAddress == "")
-      return res.status(400).send({ error: 'Public Address is required' });
+    if(publicAddress === "") {
+      return res.status(400).send({error: 'Public Address is required'});
+    }
     
     const valid = WAValidator.validate(publicAddress, 'ETH');
-    if(!valid)
-      return res.status(400).send({ error:'Enter valid Public Address ' })
+    if(!valid) {
+      return res.status(400).send({error: 'Enter valid Public Address '})
+    }
 
     let user = await User.findOne({ publicAddress: publicAddress })
     if (!user) {
@@ -38,8 +40,9 @@ exports.get = async (req, res, next) => {
   try {
     
     const user = await User.findById(req.user.id).select({_id: 0,publicAddress:1})
-    if(!user)
-      return res.status(401).send({ error: 'invalid user' })
+    if(!user) {
+      return res.status(401).send({error: 'invalid user'})
+    }
 
     return res.send(user)
   } catch (err) {
@@ -61,13 +64,14 @@ exports.patch = async (req, res) => {
       publicAddress
     } = req.body
 
-    if(username == ""  || email == "" || publicAddress== ""){
+    if(username === ""  || email === "" || publicAddress=== ""){
       throw new Error("fill the fields")
     }
-    if(!helper.isEmailValid(email))
-      return res.status(401).send({error:'Enter Valid Email'})
+    if(!helper.isEmailValid(email)) {
+      return res.status(401).send({error: 'Enter Valid Email'})
+    }
 
-    if (user.username != username) {
+    if (user.username !== username) {
       const doesUserExit = await User.exists({ username: username })
       if (doesUserExit) {
         return res.status(401).send({
