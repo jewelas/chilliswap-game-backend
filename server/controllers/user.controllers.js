@@ -1,12 +1,17 @@
 const Web3 = require('web3')
 const {User} = require('../models/user')
 const bcrypt = require("bcryptjs");
+const WAValidator = require('public-address-validator');
 
 exports.getUser = async (req, res, next) => {
   try {
     const publicAddress = req.params.publicAddress.toLowerCase()
     if(publicAddress == "")
-      return res.status(400).send({ error: 'Public Address is required'});
+      return res.status(400).send({ error: 'Public Address is required' });
+    
+    const valid = WAValidator.validate(publicAddress, 'ETH');
+    if(!valid)
+      return res.status(400).send({ error:'Enter valid Public Address ' })
 
     let user = await User.findOne({ publicAddress: publicAddress })
     if (!user) {
