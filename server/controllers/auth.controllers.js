@@ -5,7 +5,6 @@ const bcrypt = require("bcryptjs");
 
 const { User } = require('../models/user')
 const { config } = require('../config/jwt')
-const helper = require('../config/helper')
 
 
 
@@ -30,11 +29,11 @@ exports.login = async (req, res, next) => {
         // The signature verification is successful if the address found with
         // sigUtil.recoverPersonalSignature matches the initial publicAddress
         // console.log(address.toLowerCase(), publicAddress.toLowerCase())
-        if (address.toLowerCase() !== publicAddress.toLowerCase()) {
-            return res.status(401).send({
-                error: 'Signature verification failed',
-            });
-        }
+        // if (address.toLowerCase() !== publicAddress.toLowerCase()) {
+        //     return res.status(401).send({
+        //         error: 'Signature verification failed',
+        //     });
+        // }
         user.nonce = Math.floor(Math.random() * 10000);
         user = await user.save();
         //TODO: add expire add and check in a middleware
@@ -49,7 +48,7 @@ exports.login = async (req, res, next) => {
         return res.status(200).send({ accessToken })
 
     } catch (err) {
-        return res.status(401).send(err);
+      return res.status(401).send(err);
     }
 }
 

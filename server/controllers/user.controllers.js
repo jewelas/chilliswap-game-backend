@@ -1,7 +1,6 @@
 const Web3 = require('web3')
 const {User} = require('../models/user')
 const bcrypt = require("bcryptjs");
-const helper = require('../config/helper')
 
 exports.getUser = async (req, res, next) => {
   try {

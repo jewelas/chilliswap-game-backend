@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const auth = require("../middleware/auth");
-const userController = require('../controllers/user')
+const userController = require('../controllers/user.controllers')
 
 
 // need to authozied
