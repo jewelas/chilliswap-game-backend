@@ -1,5 +1,5 @@
 {
-  "name": "chilliswap",
+  "name": "chilli-api-server",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -7,7 +7,6 @@
     "test": "nodemon app.js",
     "start": "node app.js"
   },
-  "author": "",
   "license": "ISC",
   "dependencies": {
     "aws-sdk": "^2.931.0",
