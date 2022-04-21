@@ -34,7 +34,7 @@ exports.login = async (req, res, next) => {
                 error: 'Signature verification failed',
             });
         }
-        user.nonce = Math.floor(Math.random() * 10000);
+        user.nonce = Math.floor(Math.random() * 1000000);
         user = await user.save();
         //TODO: add expire add and check in a middleware
         let payload = {

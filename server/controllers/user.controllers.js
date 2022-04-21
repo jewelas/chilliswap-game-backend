@@ -16,7 +16,7 @@ exports.getUser = async (req, res, next) => {
     let user = await User.findOne({ publicAddress: publicAddress })
     if (!user) {
       const newUser = new User({
-        nonce: Math.floor(Math.random() * 10000),
+        nonce: Math.floor(Math.random() * 1000000),
         publicAddress: publicAddress,
         username: '', // later make a uniquie name
         email: '', // later make a uniquie name
