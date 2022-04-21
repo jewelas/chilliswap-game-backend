@@ -19,7 +19,7 @@ exports.getUser = async (req, res, next) => {
         nonce: Math.floor(Math.random() * 1000000),
         publicAddress: publicAddress,
         username: '', // later make a uniquie name
-        email: '', // later make a uniquie name
+        // email: '', // later make a uniquie name
 
       })
       user = await newUser.save()
