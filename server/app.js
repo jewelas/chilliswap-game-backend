@@ -53,7 +53,7 @@ app.use((req, res) => {
 //starting server
 const PORT = process.env.PORT || 3001
 app.listen(PORT, process.env.IP, function () {
-    console.log("Kokoswap NFT Started on PORT: "+ PORT);
+    console.log("CHILLI API server Started on PORT: "+ PORT);
    
 });
 
