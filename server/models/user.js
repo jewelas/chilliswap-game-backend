@@ -3,6 +3,7 @@ const Joi = require('joi')
 
 
 const userSchema = new mongoose.Schema({
+
     nonce: {
         type: Number
     },
@@ -10,17 +11,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         unique: true
     },
-    // email: {
-    //     type: String,
-    //     // unique :true
-    // },
-    username: {
-        type: String,
-        // unique :true
+    active: {
+        type: Boolean,
+        default  :true
     },
-    // password: {
-    //     type: String 
-    // }
+
 
 
 })

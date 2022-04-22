@@ -8,8 +8,4 @@ const WSoptions = {
       onTimeout: false
   }
 };
-
-
-
-  
-  module.exports = {WSoptions}
+module.exports = {WSoptions}

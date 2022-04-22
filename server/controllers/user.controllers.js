@@ -6,8 +6,9 @@ const WAValidator = require('public-address-validator');
 exports.getUser = async (req, res, next) => {
   try {
     const publicAddress = req.params.publicAddress.toLowerCase()
-    if(publicAddress == "")
-      return res.status(400).send({ error: 'Public Address is required' });
+    if(publicAddress == "") {
+      return res.status(400).send({error: 'Public Address is required'});
+    }
     
     const valid = WAValidator.validate(publicAddress, 'ETH');
     if(!valid)
