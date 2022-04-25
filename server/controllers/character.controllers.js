@@ -2,11 +2,12 @@ const character = require('../models/character')
 
 exports.set = async (req, res) => {
   try {
-    const {} = req.body
-    const newCharacter = new character({ 
-      userId: req.user.id
-    })
-    await newCharacter.save()
+    const {title, description } = req.body
+    
+    await character.updateOne(
+      { "userId": req.user.id },
+      { $push: {"list": { title, description }}}
+    )
     res.send({status: "success"})
 
   } catch (error) {
