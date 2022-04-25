@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "nodemon app.js",
-    "start": "node app.js"
+    "start": "node app.js",
+    "lint": "eslint ."
   },
   "license": "ISC",
   "dependencies": {
@@ -30,5 +31,8 @@
     "public-address-validator": "^0.2.4",
     "request": "^2.88.2",
     "web3": "^1.3.5"
+  },
+  "devDependencies": {
+    "eslint": "^8.14.0"
   }
 }

@@ -31,9 +31,9 @@ exports.findOne = async(req, res) => {
       const _id = req.params.id
       const data =  await tournament.findByIdAndUpdate(_id,req.body)
       if (data) {
-        return res.send({ status:'success'})
+        res.send({ status: 'success'})
       } else {
-        return res.status(400).send({ status:'false'})
+        res.status(400).send({ status: 'false' })
       }
     } catch (error) {
       return res.status(401).send(error.message);
@@ -54,9 +54,9 @@ exports.delete = async(req, res) => {
     const _id = req.params.id
     const data =  await tournament.findByIdAndRemove(_id)
     if (data) {
-      return res.send({ status:'success'})
+      res.send({ status: 'success'})
     } else {
-      return res.status(400).send({ status:'false'})
+      res.status(400).send({ status: 'false'})
     }
   } catch (error) {
     return res.status(401).send(error.message);

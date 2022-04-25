@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 const subcharacterSchema = new mongoose.Schema({
   title: {
-    type:String
+    type: String
   },
   description: {
     type: String
@@ -16,7 +16,7 @@ const characterSchema = new mongoose.Schema({
     type: Schema.Types.ObjectId,
     ref: "user",
   },
-  list:[subcharacterSchema]
+  list: [subcharacterSchema]
 },
 { timestamps: true }
 )
