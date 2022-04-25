@@ -6,7 +6,8 @@ exports.set = async (req, res) => {
     
     await character.updateOne(
       { "userId": req.user.id },
-      { $push: {"list": { title, description }}}
+      { $push: {"list": { title, description }}},
+      {upsert: true}
     )
     res.send({status: "success"})
 
