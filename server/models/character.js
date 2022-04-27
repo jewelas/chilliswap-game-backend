@@ -1,16 +1,29 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 const subcharacterSchema = new mongoose.Schema({
-  title: {
+
+  skintone: {
     type: String
   },
-  description: {
+  hairstyle: {
     type: String
+  },
+  headwear: {
+    type: String
+  },
+  eyecolor: {
+    type: String
+  },
+  clothes: {
+    type: Array
+  },
+  accessories: {
+    type: Array
   }
 },
 { timestamps: true }
 )
-const characterSchema = new mongoose.Schema({
+const tableSchema = new mongoose.Schema({
   userId: {
     trim: true,
     type: Schema.Types.ObjectId,
@@ -20,4 +33,4 @@ const characterSchema = new mongoose.Schema({
 },
 { timestamps: true }
 )
-module.exports = mongoose.model('character', characterSchema)
+module.exports = mongoose.model('character', tableSchema)

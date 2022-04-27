@@ -1,30 +1,30 @@
 const mongoose = require('mongoose')
-const Schema = mongoose.Schema;
 
-const tournamentSchema = new mongoose.Schema({
+const tableSchema = new mongoose.Schema({
 
-  userId: {
+  tournament_name: {
+    type: String,
     trim: true,
-    type: Schema.Types.ObjectId,
-    ref: "user",
+    required: true,
   },
-  startDate: {
+  duration: {
+    type: String,
+  },
+  timestamp: {
+    type: String
+  },
+  start_date: {
     type: Date,
   },
-  endDate: {
+  end_date: {
     type: Date,
   },
   active: {
     type: Boolean,
     default: true,
-  },
-  title: {
-    type: String,
-    trim: true,
-    required: true,
-  },
+  } 
   
 },
 { timestamps: true }
 )
-module.exports = mongoose.model('tournament', tournamentSchema)
+module.exports = mongoose.model('tournament', tableSchema)

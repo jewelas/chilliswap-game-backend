@@ -1,4 +1,4 @@
-const {User} = require('../models/user')
+const User = require('../models/user')
 const bcrypt = require("bcryptjs");
 const WAValidator = require('public-address-validator');
 
@@ -38,11 +38,11 @@ exports.getUser = async (req, res,) => {
 exports.get = async (req, res, next) => {
   try {
     
-    const user = await User.findById(req.user.id).select({_id: 0,publicAddress: 1})
+    const user = await User.findById(req.user.id)
     if (!user) {
       return res.status(401).send({ error: 'invalid user' })
     }
-    res.send(user)
+    res.send({publicAddress: user.publicAddress})
   } catch (err) {
     console.log(err)
     next()
@@ -135,3 +135,19 @@ exports.resetPassword = async (req, res, next) => {
     next()
   }
 }
+
+ exports.getswapchillies = async (req, res,) => {
+    try {
+      const user = await User.findById({_id: req.user.id})
+      if (!user) {
+        return res.status(401).send({ error: 'invalid user' })
+      }
+      res.send({status: "success",data: {token_amount: user.token_amount}})
+
+    } catch (error) {
+      res.status(401).send(error.message);
+    }
+
+  }
+  
+

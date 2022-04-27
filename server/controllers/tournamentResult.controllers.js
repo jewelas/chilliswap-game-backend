@@ -1,14 +1,14 @@
-const tournament = require('../models/tournament')
+const tournamentResult = require('../models/tournamentResult')
 
 exports.create = async (req, res) => {
   try {
-    const { start_date, end_date, tournament_name, duration, timestamp  } = req.body
-    const newtournament = new tournament({
-      start_date: start_date,
-      end_date: end_date,
-      tournament_name: tournament_name,
-      duration: duration,
-      timestamp: timestamp
+    const { tournament_id, distance, time, collected_chillies } = req.body
+    const newtournament = new tournamentResult({
+      userId: req.user.id ,
+      tournamentId: tournament_id ,
+      distance: distance,
+      time: time,
+      collected_chillies: collected_chillies
     })
     await newtournament.save()
     res.send({status: "success"})
@@ -21,7 +21,7 @@ exports.create = async (req, res) => {
 exports.findOne = async(req, res) => {
     try {
       const _id = req.params.id
-      const data =  await tournament.findById(_id)
+      const data =  await tournamentResult.findById(_id)
       return res.send(data)
     } catch (error) {
       return res.status(401).send(error.message);
@@ -30,7 +30,7 @@ exports.findOne = async(req, res) => {
   exports.update = async(req, res) => {
     try {
       const _id = req.params.id
-      const data =  await tournament.findByIdAndUpdate(_id,req.body)
+      const data =  await tournamentResult.findByIdAndUpdate(_id,req.body)
       if (data) {
         res.send({ status: 'success'})
       } else {
@@ -43,7 +43,7 @@ exports.findOne = async(req, res) => {
 
 exports.findAll = async(req, res) => {
   try {
-    const data =  await tournament.find()
+    const data =  await tournamentResult.find()
     return res.send(data)
   } catch (error) {
     return res.status(401).send(error.message);
@@ -52,7 +52,7 @@ exports.findAll = async(req, res) => {
 exports.delete = async(req, res) => {
   try {
     const _id = req.params.id
-    const data =  await tournament.findByIdAndRemove(_id)
+    const data =  await tournamentResult.findByIdAndRemove(_id)
     if (data) {
       res.send({ status: 'success'})
     } else {

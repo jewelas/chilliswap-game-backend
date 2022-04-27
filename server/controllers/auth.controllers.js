@@ -3,7 +3,7 @@ const { bufferToHex } = require('ethereumjs-util');
 const jwt = require('jsonwebtoken');
 const bcrypt = require("bcryptjs");
 
-const { User } = require('../models/user')
+const  User  = require('../models/user')
 const { config } = require('../config/jwt')
 
 
@@ -12,7 +12,6 @@ exports.login = async (req, res, ) => {
     try {
 
         const {signature, publicAddress } = req.body;
-        
         let user = await User.findOne({ publicAddress: publicAddress.toLowerCase()})
         if (!user) {
           return res.status(400).send({ error: 'user not exist'});

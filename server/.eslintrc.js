@@ -48,5 +48,6 @@ module.exports = {
         // "consistent-return":2,
         "block-spacing": 2,
         "key-spacing": 2,
+        
     }
 }
