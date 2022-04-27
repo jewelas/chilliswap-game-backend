@@ -10,7 +10,8 @@ module.exports = {
     },
     "globals": {
         "process": true,
-        "Buffer": true
+        "Buffer": true,
+        "__dirname": true
     },
     "rules": {
         "no-duplicate-imports": 2,

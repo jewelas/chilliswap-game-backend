@@ -1,0 +1,162 @@
+/*Dark Mode*/
+
+.dark-mode {
+    background:#141416;
+    color:#FCFCFD;
+}
+.dark-mode .set-bg{
+    background:#141416;
+}
+
+.dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode .title1, .dark-mode h4,.dark-mode h5, .dark-mode span, .dark-mode .linkStyle,.dark-mode h6, .dark-mode .btn-outline-warning,.dark-mode p{
+    color:#FCFCFD !important;
+}
+.dark-mode .title1 span{
+    color:#777E90 !important;
+}
+.dark-mode .banner-counter,.dark-mode .item{
+    background: #23262F;
+    border-color: #23262F;
+}
+.dark-mode .card{
+    background: #141416;
+}
+.dark-mode .btn-outline-warning {
+    border-color: #353945;
+}
+.dark-mode .advanced-search{
+    border:2px solid #353945 !important;
+}
+.dark-mode .nav-item{
+    border-top:1px solid #353945 !important;
+}
+
+.dark-mode #sidebarMenu{
+    background:#23262F ;
+}
+.dark-mode svg path {
+    fill:#FCFCFD;
+}
+.dark-mode input{
+    background: #141416;
+    color: #FCFCFD !important;
+   
+}
+.metaText{
+    color:#000;
+}
+.dark-mode .metaText{
+    color:#000 !important;
+}
+.dark-mode .navlink{
+    border-left:1px solid#353945 !important;
+}
+.dark-mode .btn-info ,.dark-mode .btn-secondary,.dark-mode .btn-info:hover{
+    color:#FCFCFD;
+    background: none;
+}
+.dark-mode .tabs-section .nav-link{
+    color:#fff !important;
+    background: none;
+    border:1px solid #353945;
+}
+.dark-mode .masonry .item:hover, .dark-mode .masonry1 .item:hover{
+    background: #141416;
+}
+.dark-mode .metamask-modal .modal-content{
+    background: #141416;
+    box-shadow: inset 0 0 0 1px #353945;
+}
+.dark-mode .metamaskBtn {
+    background:#EE920C;
+}
+.dark-mode .features{
+    background: #23262F;
+}
+
+.dark-mode .footer-title{
+    color:#FCFCFD;
+}
+.dark-mode .top-footer strong{
+    color:#FCFCFD;
+}
+.dark-mode .topheader-button-list .dropdown-content {
+   
+    background: #23262F;
+}
+.dark-mode .bid-button{
+    background: none !important;
+
+}
+.dark-mode .section{
+    border-top: 1px solid #353945 !important;
+}
+.dark-mode .footer-line{
+    border-color:#353945 ;
+}
+.dark-mode .topheader-button-list .dropdown-content a:hover{
+    background:none;
+    box-shadow: none;
+    color:#fff;
+}
+.dark-mode .layout .item{
+
+    box-shadow: 0px 0px 4px  #353945;
+    background: #23262F;
+    border-color: #23262F;
+}
+.dark-mode .about-grid h2{
+    color:#FCFCFD;
+}
+.dark-mode .banner-counter h2, .dark-mode .history-bid-section h2{
+    color:#FCFCFD;
+}
+.dark-mode .produts-sidebar{
+    background: #353945;
+}
+.dark-mode .add-background{
+    background: #353945;
+}
+.dark-mode .form-control:focus, .dark-mode .form-class input{
+    color:#FCFCFD !important;
+    background:#353945;
+}
+.dark-mode .form-outline .form-control~.form-label{
+    color:#FCFCFD;
+}
+.dark-mode .desc-class h2{
+    color:#FCFCFD !important;
+}
+.dark-mode .fa{
+    color:#fff;
+}
+.dark-mode .nav-link{
+    border-left:1px solid #353945 !important;
+}
+.dark-mode .artworks .nav-tabs .nav-link.active {
+    color: #fff;
+      background-color: #fff;
+      border-color: #dee2e6 #dee2e6 #fff;
+  
+      /*border-radius: 30px;*/
+      display:block;
+         padding-top: 12px;
+      }
+     .dark-mode .artworks .nav-tabs .nav-link{
+          color:#fff;
+      }
+.dark-mode .bids-list{
+    background:#23262F !important;
+}
+
+.dark-mode .artCardNew{
+    background:#23262F !important;
+}
+
+.dark-mode .artCardNew p {
+    color: #EE920C !important;
+}
+
+.dark-mode .card{
+    background:#23262F !important;
+}
