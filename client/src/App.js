@@ -15,19 +15,16 @@ function App() {
 
   const accessToken = userSlice.accessToken
   const userStatus = userSlice.status
-  //const error = userSlice.error
-
 
 
   useEffect(() => {
    
     (async()=>{
-      if (accessToken && userStatus === 'succeeded'  &&  window.ethereum) {
+      if (accessToken && window.ethereum) {
         
        try{
           await connectMetaMask()
           dispatch(fetchUser(accessToken))
-          console.log('try')
         }catch(err){
           console.log(err)
           window.localStorage.removeItem(LS_KEY)
@@ -43,8 +40,10 @@ function App() {
     try{
       let localAccessToken = window.localStorage.getItem(LS_KEY)
     if(localAccessToken && localAccessToken !== undefined){
-      localAccessToken = JSON.parse(localAccessToken)
+      localAccessToken = localAccessToken
       dispatch(setAccessToken(localAccessToken))
+      dispatch(fetchUser(localAccessToken))
+      
     }else{
         dispatch(logOut())
     }

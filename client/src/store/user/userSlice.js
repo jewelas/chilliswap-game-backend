@@ -10,7 +10,7 @@ import { LS_KEY } from "../../constant";
 
 const initialState = {
     user: null,
-    accessToken: null,
+    accessToken: localStorage.getItem(LS_KEY) || null,
     error: null,
     status: 'idle',
 }
@@ -58,7 +58,7 @@ const userSlice = createSlice({
             prepare(accessToken) {
                 // im not sure which function should i use to store the token to the localstore
                 // might change this later
-                localStorage.setItem(LS_KEY, JSON.stringify(accessToken));
+                localStorage.setItem(LS_KEY, accessToken);
                 
                 return {
                     payload: accessToken,
