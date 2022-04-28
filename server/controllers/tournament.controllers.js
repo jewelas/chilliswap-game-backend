@@ -1,10 +1,14 @@
 const tournament = require('../models/tournament')
 
-exports.add = async (req, res) => {
+exports.create = async (req, res) => {
   try {
-    const {} = req.body
-    const newtournament = new tournament({ 
-      userId: req.user.id
+    const { start_date, end_date, tournament_name, duration, timestamp  } = req.body
+    const newtournament = new tournament({
+      start_date: start_date,
+      end_date: end_date,
+      tournament_name: tournament_name,
+      duration: duration,
+      timestamp: timestamp
     })
     await newtournament.save()
     res.send({status: "success"})
@@ -14,21 +18,46 @@ exports.add = async (req, res) => {
   }
 }
 
-exports.edit = async(req, res) => {
+exports.findOne = async(req, res) => {
     try {
-      const userId = req.user.id
-      const data =  await tournament.find({userId})
+      const _id = req.params.id
+      const data =  await tournament.findById(_id)
       return res.send(data)
     } catch (error) {
       return res.status(401).send(error.message);
     }
   }
+  exports.update = async(req, res) => {
+    try {
+      const _id = req.params.id
+      const data =  await tournament.findByIdAndUpdate(_id,req.body)
+      if (data) {
+        res.send({ status: 'success'})
+      } else {
+        res.status(400).send({ status: 'false' })
+      }
+    } catch (error) {
+      return res.status(401).send(error.message);
+    }
+  }
 
-exports.get = async(req, res) => {
+exports.findAll = async(req, res) => {
   try {
-    const userId = req.user.id
-    const data =  await tournament.find({userId})
+    const data =  await tournament.find()
     return res.send(data)
+  } catch (error) {
+    return res.status(401).send(error.message);
+  }
+}
+exports.delete = async(req, res) => {
+  try {
+    const _id = req.params.id
+    const data =  await tournament.findByIdAndRemove(_id)
+    if (data) {
+      res.send({ status: 'success'})
+    } else {
+      res.status(400).send({ status: 'false'})
+    }
   } catch (error) {
     return res.status(401).send(error.message);
   }

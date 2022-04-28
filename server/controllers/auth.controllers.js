@@ -3,18 +3,17 @@ const { bufferToHex } = require('ethereumjs-util');
 const jwt = require('jsonwebtoken');
 const bcrypt = require("bcryptjs");
 
-const { User } = require('../models/user')
+const  User  = require('../models/user')
 const { config } = require('../config/jwt')
 
 
 
-exports.login = async (req, res, next) => {
+exports.login = async (req, res, ) => {
     try {
 
         const {signature, publicAddress } = req.body;
-        
         let user = await User.findOne({ publicAddress: publicAddress.toLowerCase()})
-        if(!user) {
+        if (!user) {
           return res.status(400).send({ error: 'user not exist'});
         }
         const msg = `Please sign this message to connect to ${process.env.APP_NAME}(${user.nonce})`;
@@ -37,11 +36,11 @@ exports.login = async (req, res, next) => {
         user.nonce = Math.floor(Math.random() * 1000000);
         user = await user.save();
         //TODO: add expire add and check in a middleware
-        let payload = {
+        const payload = {
             id: user._id,
             publicAddress
         }
-        let accessToken = await jwt.sign(payload, config.secret, { algorithm: config.algorithms[0], })
+        const accessToken = await jwt.sign(payload, config.secret, { algorithm: config.algorithms[0], })
         if (!accessToken) {
             return new Error('Empty token');
         }
@@ -52,24 +51,26 @@ exports.login = async (req, res, next) => {
     }
 }
 
-exports.register = async (req, res, next) => {
+exports.register = async (req, res,) => {
   try {
 
       const { signature, publicAddress, email, password ,username } = req.body;
       
       let user = await User.findOne({ publicAddress: publicAddress.toLowerCase()})
       
-      if(user && user.email !== email) {
+      if (user && user.email !== email) {
         return res.status(400).send({ error: 'Email or Public Address Not Match' });
       }
       if (!user) {
         const emailIs = await User.findOne({email})
-        if(emailIs)
-          return res.status(400).send({error:'Email Already Exists'})
+        if (emailIs) {
+          return res.status(400).send({error: 'Email Already Exists'})
+        }
         
         const usernameIs = await User.findOne({username})
-        if(usernameIs)
-          return res.status(400).send({error:'User Name Already Exists'})
+        if (usernameIs) {
+          return res.status(400).send({error: 'User Name Already Exists'})
+        }
 
         const newUser = new User({
           nonce: Math.floor(Math.random() * 10000),
@@ -112,12 +113,12 @@ exports.register = async (req, res, next) => {
       user = await user.save();
 
       //TODO: add expire add and check in a middleware
-      let payload = {
+      const payload = {
           id: user._id,
           publicAddress
       }
 
-      let accessToken = await jwt.sign(payload, config.secret, { algorithm: config.algorithms[0], })
+      const accessToken = await jwt.sign(payload, config.secret, { algorithm: config.algorithms[0], })
       if (!accessToken) {
           return new Error('Empty token');
       }

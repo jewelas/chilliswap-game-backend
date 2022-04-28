@@ -35,8 +35,8 @@ const marketContract = new WSweb3.eth.Contract(
 module.exports = {
     web3,
     WSweb3: WSweb3,
-    ERC20Token:erc20Token,
-    erc271Contract:erc271Contract,
-    marketContract:marketContract,
+    ERC20Token: erc20Token,
+    erc271Contract: erc271Contract,
+    marketContract: marketContract,
 }
   

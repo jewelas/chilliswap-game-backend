@@ -1,16 +1,30 @@
-const { string } = require('joi')
 const mongoose = require('mongoose')
-const Schema = mongoose.Schema;
 
-const tournamentSchema = new mongoose.Schema({
+const tableSchema = new mongoose.Schema({
 
-  userId: {
+  tournament_name: {
+    type: String,
     trim: true,
-    type: Schema.Types.ObjectId,
-    ref: "user",
-  }
+    required: true,
+  },
+  duration: {
+    type: String,
+  },
+  timestamp: {
+    type: String
+  },
+  start_date: {
+    type: Date,
+  },
+  end_date: {
+    type: Date,
+  },
+  active: {
+    type: Boolean,
+    default: true,
+  } 
   
 },
 { timestamps: true }
 )
-module.exports = mongoose.model('tournament', tournamentSchema)
+module.exports = mongoose.model('tournament', tableSchema)

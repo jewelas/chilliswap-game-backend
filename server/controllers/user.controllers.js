@@ -1,18 +1,17 @@
-const Web3 = require('web3')
-const {User} = require('../models/user')
+const User = require('../models/user')
 const bcrypt = require("bcryptjs");
 const WAValidator = require('public-address-validator');
 
-exports.getUser = async (req, res, next) => {
+exports.getUser = async (req, res,) => {
   try {
     const publicAddress = req.params.publicAddress.toLowerCase()
-    if(publicAddress === "") {
+    if (publicAddress === "") {
       return res.status(400).send({error: 'Public Address is required'});
     }
     
     const valid = WAValidator.validate(publicAddress, 'ETH');
-    if(!valid) {
-      return res.status(400).send({error: 'Enter valid Public Address '})
+    if (!valid) {
+      return res.status(400).send({ error: 'Enter valid Public Address ' })
     }
 
     let user = await User.findOne({ publicAddress: publicAddress })
@@ -39,12 +38,11 @@ exports.getUser = async (req, res, next) => {
 exports.get = async (req, res, next) => {
   try {
     
-    const user = await User.findById(req.user.id).select({_id: 0,publicAddress:1})
-    if(!user) {
-      return res.status(401).send({error: 'invalid user'})
+    const user = await User.findById(req.user.id)
+    if (!user) {
+      return res.status(401).send({ error: 'invalid user' })
     }
-
-    return res.send(user)
+    res.send({publicAddress: user.publicAddress})
   } catch (err) {
     console.log(err)
     next()
@@ -64,13 +62,6 @@ exports.patch = async (req, res) => {
       publicAddress
     } = req.body
 
-    if(username === ""  || email === "" || publicAddress=== ""){
-      throw new Error("fill the fields")
-    }
-    if(!helper.isEmailValid(email)) {
-      return res.status(401).send({error: 'Enter Valid Email'})
-    }
-
     if (user.username !== username) {
       const doesUserExit = await User.exists({ username: username })
       if (doesUserExit) {
@@ -79,7 +70,7 @@ exports.patch = async (req, res) => {
         })
       }
     }
-    if (user.email != email) {
+    if (user.email !== email) {
       const doesemailExit = await User.exists({ email: email })
       if (doesemailExit) {
         return res.status(401).send({
@@ -87,7 +78,7 @@ exports.patch = async (req, res) => {
         })
       }
     }
-    if (user.publicAddress != publicAddress) {
+    if (user.publicAddress !== publicAddress) {
       const doespublicAddressExit = await User.exists({ publicAddress: publicAddress })
       if (doespublicAddressExit) {
         return res.status(401).send({
@@ -100,8 +91,8 @@ exports.patch = async (req, res) => {
     user.email = email
     user.publicAddress = publicAddress
 
-    let savedUser = await user.save()
-    return res.status(200).send({publicAddress:savedUser.publicAddress, email: savedUser.email, username: savedUser.username})
+    const savedUser = await user.save()
+    return res.status(200).send({publicAddress: savedUser.publicAddress, email: savedUser.email, username: savedUser.username})
   } catch (err) {
     console.log(err)
     return res.status(500).send({
@@ -121,8 +112,9 @@ exports.resetPassword = async (req, res, next) => {
       return res.status(400).send({ error: 'New password is required' });
     }
     const user = await User.findById(req.user.id)
-    if(!user)
+    if (!user) {
       return res.status(401).send({ error: 'invalid user' })
+    }
 
     const passwordIsValid = bcrypt.compareSync(
       req.body.password,
@@ -135,11 +127,27 @@ exports.resetPassword = async (req, res, next) => {
         message: "password not match!"
       });
     }
-    newpassword = bcrypt.hashSync(newpassword, 8)
-    const updatePassword = await user.save({password:newpassword})
+    const newpass = bcrypt.hashSync(newpassword, 8)
+    await user.save({password: newpass})
 
   } catch (err) {
     console.log(err)
     next()
   }
 }
+
+ exports.getswapchillies = async (req, res,) => {
+    try {
+      const user = await User.findById({_id: req.user.id})
+      if (!user) {
+        return res.status(401).send({ error: 'invalid user' })
+      }
+      res.send({status: "success",data: {token_amount: user.token_amount}})
+
+    } catch (error) {
+      res.status(401).send(error.message);
+    }
+
+  }
+  
+

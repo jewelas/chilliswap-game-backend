@@ -19,14 +19,18 @@ app.use(limiter);
 
 app.use(cors())
 app.use(express.json())
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/users',require('./routes/user.routes'))
 app.use('/api/auth',require('./routes/auth.routes'))
 app.use('/api/setting',require('./routes/setting'))
 app.use('/api/character',require('./routes/character.router'))
 app.use('/api/tournament',require('./routes/tournament.router'))
+app.use('/api/tournament/result',require('./routes/tournamentResult.router'))
 
-
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+})
 app.use((req, res) => {
     res.status(404).json({
       message: 'Route Not Found',

@@ -2,11 +2,13 @@ const character = require('../models/character')
 
 exports.set = async (req, res) => {
   try {
-    const {} = req.body
-    const newCharacter = new character({ 
-      userId: req.user.id
-    })
-    await newCharacter.save()
+    const { skintone, hairstyle, eyecolor, clothes, accessories  } = req.body
+    
+    await character.updateOne(
+      { "userId": req.user.id },
+      { $push: {"list": { skintone, hairstyle, eyecolor, clothes, accessories }}},
+      {upsert: true}
+    )
     res.send({status: "success"})
 
   } catch (error) {

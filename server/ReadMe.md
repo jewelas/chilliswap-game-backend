@@ -1,5 +1,5 @@
-# Chilliswap
-NFT Marketplace
+# Chilliswap game backend
+CHILLI swap geme backend APIs
 
 ## Installation
 
@@ -10,6 +10,3 @@ npm install
 ```bash
 npm start
 ```
-
-## Security
-    .env included for now

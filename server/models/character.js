@@ -1,14 +1,36 @@
-const { string } = require('joi')
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
+const subcharacterSchema = new mongoose.Schema({
 
-const characterSchema = new mongoose.Schema({
-  userId: {
-    trim: true,
-    type: Schema.Types.ObjectId,
-    ref: "user",
+  skintone: {
+    type: String
+  },
+  hairstyle: {
+    type: String
+  },
+  headwear: {
+    type: String
+  },
+  eyecolor: {
+    type: String
+  },
+  clothes: {
+    type: Array
+  },
+  accessories: {
+    type: Array
   }
 },
 { timestamps: true }
 )
-module.exports = mongoose.model('character', characterSchema)
+const tableSchema = new mongoose.Schema({
+  userId: {
+    trim: true,
+    type: Schema.Types.ObjectId,
+    ref: "user",
+  },
+  list: [subcharacterSchema]
+},
+{ timestamps: true }
+)
+module.exports = mongoose.model('character', tableSchema)
