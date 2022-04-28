@@ -4,12 +4,12 @@ const Schema = mongoose.Schema;
 
 const tableSchema = new mongoose.Schema({
 
-  userId: {
+  user: {
     trim: true,
     type: Schema.Types.ObjectId,
     ref: "user",
   },
-  tournamentId: {
+  tournament: {
     trim: true,
     type: Schema.Types.ObjectId,
     ref: "tournament",
