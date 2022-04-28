@@ -4,8 +4,8 @@ exports.create = async (req, res) => {
   try {
     const { tournament_id, distance, time, collected_chillies } = req.body
     const newtournament = new tournamentResult({
-      userId: req.user.id ,
-      tournamentId: tournament_id ,
+      user: req.user.id ,
+      tournament: tournament_id ,
       distance: distance,
       time: time,
       collected_chillies: collected_chillies
