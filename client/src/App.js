@@ -15,9 +15,6 @@ function App() {
 
   const accessToken = userSlice.accessToken
   const userStatus = userSlice.status
-  //const error = userSlice.error
-
-
 
   useEffect(() => {
    
@@ -53,8 +50,6 @@ function App() {
       console.log(err)
       window.localStorage.removeItem(LS_KEY)
     }
-    
-    
 
   }, [])
 
