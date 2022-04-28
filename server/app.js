@@ -29,9 +29,9 @@ app.use('/api/tournament',require('./routes/tournament.router'))
 app.use('/api/tournament/result',require('./routes/tournamentResult.router'))
 app.use('/api/leadboard',require('./routes/leadboard.router'))
 
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'public', 'index.html'));
-// })
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+})
 app.use((req, res) => {
     res.status(404).json({
       message: 'Route Not Found',
