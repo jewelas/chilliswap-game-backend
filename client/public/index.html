@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!-- <meta name="theme-color" content="#000000" /> -->
   <meta name="description" content="" />
+  <meta http-equiv="Content-Security-Policy" content="default-src * self blob: data: gap:; style-src * self 'unsafe-inline' blob: data: gap:; script-src * 'self' 'unsafe-eval' 'unsafe-inline' blob: data: gap:; object-src * 'self' blob: data: gap:; img-src * self 'unsafe-inline' blob: data: gap:; connect-src self * 'unsafe-inline' blob: data: gap:; frame-src * self blob: data: gap:;">
+
   <title>Chilliswap</title>
   <link rel="stylesheet" href="/assets/css/bootstrap.min.css" type="text/css" />
   
@@ -17,5 +19,12 @@
  <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>
+ <script type="text/javascript" >
+  function  getToken(){
+    return localStorage.getItem('chilliswap');
+  }
+  alert(getToken());
+ </script>
+
  </body>
 </html>
