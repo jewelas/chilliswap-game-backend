@@ -19,6 +19,10 @@ const userSchema = new mongoose.Schema({
     tokenIds: {
       type: Array,
       default: []
+    },
+    tokenURIs: {
+      type: Array,
+      default: []
     }
 })
 

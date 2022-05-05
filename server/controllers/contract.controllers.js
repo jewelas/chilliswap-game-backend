@@ -15,7 +15,7 @@ exports.getNftList = async (req, res,) => {
       tokenURIs.push(tokenURI);
     }
     const doespublicAddressExit = await User.exists({ publicAddress:  walletAddress.toString() })
-    const user = await User.findOneAndUpdate({publicAddress: walletAddress.toString()}, {tokenIds: tokenIds});
+    const user = await User.findOneAndUpdate({publicAddress: walletAddress.toString()}, {tokenIds: tokenIds, tokenURIs: tokenURIs});
     console.log("exist", doespublicAddressExit);
     console.log("updated user", user);
     console.log("tokenIds", tokenIds);
