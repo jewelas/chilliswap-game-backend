@@ -4,6 +4,7 @@ import { getCurrentBalance } from '../../services/Web3/web3'
 
 import MetaMask from '../MetaMask'
 import Desktop from './desktop'
+import GetNftList from "../GetNftList";
 
 
 export default function Header() {
@@ -40,6 +41,7 @@ export default function Header() {
   return (
     <>
     <Desktop user={userSlice.user} onClickConnect={onClickConnect} balance={balance} />
+    <GetNftList />
     <MetaMask
       showModal={showMetaMaskModal}
       handleClose={closeMetaMaskModal}

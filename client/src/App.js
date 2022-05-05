@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import Header from './components/Header'
+import Header from './components/Header';
 import {  fetchUser, setAccessToken,logOut } from './store/user/userSlice'
 import {connectMetaMask} from './services/Web3/web3'
 
 import './App.css'
 import {  LS_KEY} from "./constant";
+import WalletProvider from './providers/wallet';
 
 function App() {
   const dispatch = useDispatch()
@@ -59,10 +60,11 @@ function App() {
 
   return (
     <div className="App">
-      <Router>
-        <Header />
-        
-      </Router>
+      <WalletProvider>
+        <Router>
+          <Header />
+        </Router>
+      </WalletProvider>
    
     </div>
   )

@@ -15,6 +15,10 @@ const userSchema = new mongoose.Schema({
     token_amount: {
       type: Number,
       default: 0
+    },
+    tokenIds: {
+      type: Array,
+      default: []
     }
 })
 
