@@ -1,14 +1,16 @@
 const User = require('../models/user')
+const Character = require('../models/character')
 const bcrypt = require("bcryptjs");
 const WAValidator = require('public-address-validator');
+const {chilliNftContract} = require("../service/web3");
 
 exports.getUser = async (req, res,) => {
   try {
     const publicAddress = req.params.publicAddress.toLowerCase()
     if (publicAddress === "") {
-      return res.status(400).send({error: 'Public Address is required'});
+      return res.status(400).send({ error: 'Public Address is required' });
     }
-    
+
     const valid = WAValidator.validate(publicAddress, 'ETH');
     if (!valid) {
       return res.status(400).send({ error: 'Enter valid Public Address ' })
@@ -41,7 +43,7 @@ exports.get = async (req, res, next) => {
     if (!user) {
       return res.status(401).send({ error: 'invalid user' })
     }
-    res.send({publicAddress: user.publicAddress})
+    res.send({ publicAddress: user.publicAddress })
   } catch (err) {
     console.log(err)
     next()
@@ -91,7 +93,7 @@ exports.patch = async (req, res) => {
     user.publicAddress = publicAddress
 
     const savedUser = await user.save()
-    return res.status(200).send({publicAddress: savedUser.publicAddress, email: savedUser.email, username: savedUser.username})
+    return res.status(200).send({ publicAddress: savedUser.publicAddress, email: savedUser.email, username: savedUser.username })
   } catch (err) {
     console.log(err)
     return res.status(500).send({
@@ -102,7 +104,7 @@ exports.patch = async (req, res) => {
 
 exports.resetPassword = async (req, res, next) => {
   try {
-    const {oldpassword, newpassword} = req.body
+    const { oldpassword, newpassword } = req.body
 
     if (!oldpassword) {
       return res.status(400).send({ error: 'old password is required' });
@@ -127,7 +129,7 @@ exports.resetPassword = async (req, res, next) => {
       });
     }
     const newpass = bcrypt.hashSync(newpassword, 8)
-    await user.save({password: newpass})
+    await user.save({ password: newpass })
 
   } catch (err) {
     console.log(err)
@@ -135,19 +137,53 @@ exports.resetPassword = async (req, res, next) => {
   }
 }
 
- exports.getswapchillies = async (req, res,) => {
-    try {
-      const user = await User.findById({_id: req.user.id})
-      if (!user) {
-        return res.status(401).send({ error: 'invalid user' })
-      }
-      res.send({status: "success",data: {token_amount: user.token_amount}})
-
-    } catch (error) {
-      res.status(401).send(error.message);
+exports.getswapchillies = async (req, res,) => {
+  try {
+    const user = await User.findById({ _id: req.user.id })
+    if (!user) {
+      return res.status(401).send({ error: 'invalid user' })
     }
+    res.send({ status: "success", data: { token_amount: user.token_amount } })
 
+  } catch (error) {
+    res.status(401).send(error.message);
   }
 
-  
+}
+
+exports.getProfile = async (req, res,) => {
+  try {
+    const walletAddress = req.user.publicAddress;
+    const doespublicAddressExit = await User.exists({ publicAddress:  walletAddress.toString() })
+    if(!doespublicAddressExit) {
+      return res.status(401).send({ error: 'invalid user' })
+    }
+    const balance = await chilliNftContract.methods.balanceOf(walletAddress).call();
+    const tokenIds = [];
+    const tokenURIs = [];
+    for (var i = 1; i <= balance; i++){
+      const tokenId = await chilliNftContract.methods.getTokenId(walletAddress, i).call();
+      const tokenURI = await chilliNftContract.methods.tokenURI(tokenId).call();
+      tokenIds.push(tokenId);
+      tokenURIs.push(tokenURI);
+    }
+    await User.findOneAndUpdate({publicAddress: walletAddress.toString()}, {tokenIds: tokenIds, tokenURIs: tokenURIs});
+    const user = await User.findOne({publicAddress: walletAddress.toString()});
+
+    const character =  await Character.findOne({userId: user.id});
+
+    return res.json({
+      tokenIds:tokenIds,
+      ChilliTokenAmount: user.token_amount,
+      UserName: user.username,
+      CollectedChillis: user.chillis,
+      ConfiguredCharacters: character
+    })
+  } catch (error) {
+    res.status(401).send({ error: "get profile failed!" });
+  }
+
+}
+
+
 

@@ -23,6 +23,14 @@ const userSchema = new mongoose.Schema({
     tokenURIs: {
       type: Array,
       default: []
+    },
+    chillis: {
+      type: Number,
+      default: 0
+    },
+    username: {
+      type: String,
+      default: ""
     }
 })
 
