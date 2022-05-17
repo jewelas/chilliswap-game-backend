@@ -2,7 +2,7 @@ const Character = require('../models/character')
 
 exports.set = async (req, res) => {
   try {
-    const { skintone, hairstyle, eyecolor, clothes, accessories  } = req.body
+    // const { skintone, hairstyle, eyecolor, clothes, accessories  } = req.body
     
     // await Character.updateOne(
     //   { "userId": req.user.id },
@@ -13,13 +13,13 @@ exports.set = async (req, res) => {
     if(isExist) {
       await Character.updateOne(
         { "userId": req.user.id },
-        {  "characterData": { skintone, hairstyle, eyecolor, clothes, accessories }},
+        {  "characterData": req.body},
       )
     }
     else {
       const newCharacter = new Character ({
         userId: req.user.id,
-        characterData: { skintone, hairstyle, eyecolor, clothes, accessories }
+        characterData: req.body
       })
       await newCharacter.save();
     }

@@ -29,7 +29,7 @@ const tableSchema = new mongoose.Schema({
     type: Schema.Types.ObjectId,
     ref: "user",
   },
-  characterData: subcharacterSchema
+  characterData: [subcharacterSchema]
 },
 { timestamps: true }
 )
