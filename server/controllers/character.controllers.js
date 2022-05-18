@@ -9,15 +9,16 @@ exports.set = async (req, res) => {
     //   { $push: {"list": { skintone, hairstyle, eyecolor, clothes, accessories }}},
     //   {upsert: true}
     // )
-    const isExist = await Character.findOne({"userId" : req.user.id});
+    const isExist = await Character.findOne({"userAddress" : req.user.publicAddress});
     if(isExist) {
       await Character.updateOne(
-        { "userId": req.user.id },
+        { "userAddress" : req.user.publicAddress },
         {  "characterData": req.body},
       )
     }
     else {
       const newCharacter = new Character ({
+        userAddress: req.user.publicAddress,
         userId: req.user.id,
         characterData: req.body
       })

@@ -173,7 +173,7 @@ exports.getProfile = async (req, res,) => {
     await User.findOneAndUpdate({publicAddress: walletAddress.toString()}, {tokenIds: tokenIds, tokenURIs: tokenURIs, token_amount: tokenAmount});
     const user = await User.findOne({publicAddress: walletAddress.toString()});
 
-    const character =  await Character.findOne({userId: user.id});
+    const character =  await Character.findOne({userAddress: user.publicAddress});
 
     return res.json({
       nftTokenIds:tokenIds,

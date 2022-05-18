@@ -29,6 +29,10 @@ const tableSchema = new mongoose.Schema({
     type: Schema.Types.ObjectId,
     ref: "user",
   },
+  userAddress: {
+    type: String,
+    unique: true
+  },
   characterData: [subcharacterSchema]
 },
 { timestamps: true }
