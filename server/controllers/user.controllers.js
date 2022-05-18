@@ -2,7 +2,7 @@ const User = require('../models/user')
 const Character = require('../models/character')
 const bcrypt = require("bcryptjs");
 const WAValidator = require('public-address-validator');
-const {chilliNftContract} = require("../service/web3");
+const {chilliNftContract, chilliswapEthContract, chilliswapPolygonContract} = require("../service/web3");
 
 exports.getUser = async (req, res,) => {
   try {
@@ -159,6 +159,9 @@ exports.getProfile = async (req, res,) => {
       return res.status(401).send({ error: 'invalid user' })
     }
     const balance = await chilliNftContract.methods.balanceOf(walletAddress).call();
+    const chilliswapTokenBalancePolygon = await chilliswapPolygonContract.methods.balanceOf(walletAddress).call();
+    const chilliswapTokenBalanceEth = await chilliswapEthContract.methods.balanceOf(walletAddress).call();
+    const tokenAmount = parseFloat(chilliswapTokenBalanceEth) + parseFloat(chilliswapTokenBalancePolygon);
     const tokenIds = [];
     const tokenURIs = [];
     for (var i = 1; i <= balance; i++){
@@ -167,14 +170,15 @@ exports.getProfile = async (req, res,) => {
       tokenIds.push(tokenId);
       tokenURIs.push(tokenURI);
     }
-    await User.findOneAndUpdate({publicAddress: walletAddress.toString()}, {tokenIds: tokenIds, tokenURIs: tokenURIs});
+    await User.findOneAndUpdate({publicAddress: walletAddress.toString()}, {tokenIds: tokenIds, tokenURIs: tokenURIs, token_amount: tokenAmount});
     const user = await User.findOne({publicAddress: walletAddress.toString()});
 
     const character =  await Character.findOne({userId: user.id});
 
     return res.json({
-      tokenIds:tokenIds,
-      ChilliTokenAmount: user.token_amount,
+      nftTokenIds:tokenIds,
+      ChilliTokenAmount: tokenAmount,
+      coversionRate: 1,
       UserName: user.username,
       CollectedChillis: user.chillis,
       ConfiguredCharacters: character
