@@ -22,7 +22,10 @@ const tableSchema = new mongoose.Schema({
   active: {
     type: Boolean,
     default: true,
-  } 
+  },
+  players: {
+    type: [String],
+  }
   
 },
 { timestamps: true }

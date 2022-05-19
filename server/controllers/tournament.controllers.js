@@ -62,3 +62,48 @@ exports.delete = async(req, res) => {
     return res.status(401).send(error.message);
   }
 }
+
+exports.joined = async(req, res) => {
+  try {
+    const walletAddress = req.user.publicAddress;
+    const data = await tournament.find({players: walletAddress});
+    return res.json({
+      joinedTournaments: data
+    })
+  } catch (error) {
+    return res.status(401).send(error.message);
+  }
+}
+
+exports.notJoined = async(req, res) => {
+  try {
+    const walletAddress = req.user.publicAddress;
+    const data = await tournament.find({"players": { "$ne": walletAddress }});
+    return res.json({
+      notJoinedTournaments: data
+    })
+  } catch (error) {
+    return res.status(401).send(error.message);
+  }
+}
+
+exports.join = async(req, res) => {
+  try {
+    const { tournamentId } = req.body
+    const walletAddress = req.user.publicAddress;
+    const tour = await tournament.findById( tournamentId );
+    const index = tour.players.indexOf(walletAddress);
+    if (index >= 0) {
+      return res.status(401).send({
+        error: 'Already joined',
+      })
+    }else{
+      const players = tour.players;
+      players.push(walletAddress);
+      await tournament.findByIdAndUpdate(tournamentId, {players: players});
+      res.send({status: "success"});
+    }
+  } catch (error) {
+    return res.status(401).send(error.message);
+  }
+}
