@@ -44,7 +44,8 @@ exports.findOne = async(req, res) => {
 exports.findAll = async(req, res) => {
   try {
     const data =  await tournament.find()
-    return res.send(data)
+    const currentDate = new Date();
+    return res.send({currentDate, data})
   } catch (error) {
     return res.status(401).send(error.message);
   }
