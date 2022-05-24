@@ -2,7 +2,22 @@ const User = require('../models/user')
 const Character = require('../models/character')
 const bcrypt = require("bcryptjs");
 const WAValidator = require('public-address-validator');
-const {chilliNftContract, chilliswapEthContract, chilliswapPolygonContract} = require("../service/web3");
+const {chilliNftContract, 
+  chilliswapEthContract, 
+  chilliswapPolygonContract, 
+  chilliswapRinkebyContract, 
+  chilliswapMumbaiContract,
+  ethWeb3,
+  polygonWeb3,
+  rinkebyWeb3,
+  mumbaiWeb3
+} = require("../service/web3");
+
+const chilliEthContract = process.env.STATUS == "dev" ? chilliswapRinkebyContract : chilliswapEthContract;
+const chilliPolygonContract = process.env.STATUS == "dev" ? chilliswapMumbaiContract : chilliswapPolygonContract;
+
+const web3ETH = process.env.STATUS == "dev" ? rinkebyWeb3 : ethWeb3;
+const web3Polygon = process.env.STATUS == "dev" ? mumbaiWeb3: polygonWeb3;
 
 exports.getUser = async (req, res,) => {
   try {
@@ -159,9 +174,11 @@ exports.getProfile = async (req, res,) => {
       return res.status(401).send({ error: 'invalid user' })
     }
     const balance = await chilliNftContract.methods.balanceOf(walletAddress).call();
-    const chilliswapTokenBalancePolygon = await chilliswapPolygonContract.methods.balanceOf(walletAddress).call();
-    const chilliswapTokenBalanceEth = await chilliswapEthContract.methods.balanceOf(walletAddress).call();
-    const tokenAmount = parseFloat(chilliswapTokenBalanceEth) + parseFloat(chilliswapTokenBalancePolygon);
+    const chilliswapTokenBalancePolygon = await chilliPolygonContract.methods.balanceOf(walletAddress).call();
+    const chilliswapTokenBalanceEth = await chilliEthContract.methods.balanceOf(walletAddress).call();
+    const decimalPolygon = await chilliPolygonContract.methods.decimals().call();
+    const decimalEth = await chilliEthContract.methods.decimals().call();
+    const tokenAmount = parseFloat(chilliswapTokenBalancePolygon) / parseFloat('1e' + decimalPolygon) + parseFloat(chilliswapTokenBalanceEth) / parseFloat('1e' + decimalEth);
     const tokenIds = [];
     const tokenURIs = [];
     for (var i = 1; i <= balance; i++){
@@ -178,7 +195,7 @@ exports.getProfile = async (req, res,) => {
     return res.json({
       nftTokenIds:tokenIds,
       ChilliTokenAmount: tokenAmount,
-      coversionRate: 1,
+      coversionRate: process.env.CONVERSION_RATE,
       UserName: user.username,
       CollectedChillis: user.chillis,
       ConfiguredCharacters: character
@@ -190,4 +207,55 @@ exports.getProfile = async (req, res,) => {
 }
 
 
+exports.chilliToToken = async (req, res,) => {
+  try {
+    const {convertAmount, network} = req.body;
+    console.log('wallet:', req.user);
+    console.log("xxP", convertAmount, network);
+    const user = await User.findOne({publicAddress: req.user.publicAddress});
+    
+    let contract;
+    let web3;
+    if (network == "ETH") {
+      contract = chilliEthContract;
+      web3 = web3ETH;
+    }
+    else if (network == "Polygon") {
+      contract = chilliPolygonContract;
+      web3 = web3Polygon;
+    }
+    else res.send.status(401).send({message: "not supported network"});
 
+    if(user.chillis > convertAmount) {
+      const tokenAmount = convertAmount * process.env.CONVERSION_RATE;
+      res.send({data: {tokenAmount}})
+    }else{
+      res.send({status: "collected chillis not enough"})
+    }
+
+
+
+  //   public async send(sender: string, receiver: string, value: number, key: string)
+  //   // @ts-ignore: PromiEvent extends Promise
+  //   : PromiEvent<TransactionReceipt> {
+  //   const query = this.contract.methods.transfer(receiver, value);
+  //   const encodedABI = query.encodeABI();
+  //   const signedTx = await this.web3.eth.accounts.signTransaction(
+  //     {
+  //       data: encodedABI,
+  //       from: sender,
+  //       gas: 2000000,
+  //       to: this.contract.options.address,
+  //     },
+  //     key,
+  //     false,
+  //   );
+  //   // @ts-ignore: property exists
+  //   return this.web3.eth.sendSignedTransaction(signedTx.rawTransaction);
+  // }
+
+  } catch (error) {
+    res.status(401).send(error.message);
+  }
+
+}

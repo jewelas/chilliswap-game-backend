@@ -13,14 +13,14 @@ exports.set = async (req, res) => {
     if(isExist) {
       await Character.updateOne(
         { "userAddress" : req.user.publicAddress },
-        {  "characterData": req.body},
+        {  "characterData": req.body[0].SetCharacter},
       )
     }
     else {
       const newCharacter = new Character ({
         userAddress: req.user.publicAddress,
         userId: req.user.id,
-        characterData: req.body
+        characterData: req.body[0].SetCharacter
       })
       await newCharacter.save();
     }

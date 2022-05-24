@@ -6,5 +6,6 @@ router.get('/address/:publicAddress', userController.getUser)
 router.post('/profile/edit', auth, userController.patch)
 router.get('/get_swap_chillies', auth, userController.getswapchillies)
 router.get('/getProfile',auth, userController.getProfile)
+router.post('/chilliToToken', auth, userController.chilliToToken)
 
 module.exports = router
