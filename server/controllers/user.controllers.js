@@ -172,14 +172,115 @@ exports.getProfile = async (req, res) => {
     const user = await User.findOne({ publicAddress: walletAddress.toString() });
 
     const character = await Character.findOne({ userAddress: user.publicAddress });
+    const defaultCharacter = [
+      {
+        clothes: [
+        ],
+        accessories: [
+        ],
+        bodytype: "boy",
+        skintone: "",
+        hairstyle: "",
+        eyecolor: "",
+        updatedAt: "",
+        createdAt: "",
+        goggles: "",
+        headphones: "",
+        backpack: "",
+        watch: "",
+        shoes: ""
+      },
+      {
+        clothes: [
+        ],
+        accessories: [
+        ],
+        bodytype: "boy",
+        skintone: "",
+        hairstyle: "",
+        eyecolor: "",
+        updatedAt: "",
+        createdAt: "",
+        goggles: "",
+        headphones: "",
+        backpack: "",
+        watch: "",
+        shoes: ""
+      }, {
+        clothes: [
+        ],
+        accessories: [
+        ],
+        bodytype: "boy",
+        skintone: "",
+        hairstyle: "",
+        eyecolor: "",
+        updatedAt: "",
+        createdAt: "",
+        goggles: "",
+        headphones: "",
+        backpack: "",
+        watch: "",
+        shoes: ""
+      }, {
+        clothes: [
+        ],
+        accessories: [
+        ],
+        bodytype: "girl",
+        skintone: "",
+        hairstyle: "",
+        eyecolor: "",
+        updatedAt: "",
+        createdAt: "",
+        goggles: "",
+        headphones: "",
+        backpack: "",
+        watch: "",
+        shoes: ""
+      },
+      {
+        clothes: [
+        ],
+        accessories: [
+        ],
+        bodytype: "girl",
+        skintone: "",
+        hairstyle: "",
+        eyecolor: "",
+        updatedAt: "",
+        createdAt: "",
+        goggles: "",
+        headphones: "",
+        backpack: "",
+        watch: "",
+        shoes: ""
+      }, {
+        clothes: [
+        ],
+        accessories: [
+        ],
+        bodytype: "girl",
+        skintone: "",
+        hairstyle: "",
+        eyecolor: "",
+        updatedAt: "",
+        createdAt: "",
+        goggles: "",
+        headphones: "",
+        backpack: "",
+        watch: "",
+        shoes: ""
+      }
+    ]
 
     return res.json({
       nftTokenIds: tokenIds,
       ChilliTokenAmount: tokenAmount,
-      coversionRate: process.env.CONVERSION_RATE,
-      UserName: user.username,
+      coversionRate: parseFloat(process.env.CONVERSION_RATE),
+      minChilliConvert: parseInt(process.env.MIN_CHILLI_CONVERT),
       CollectedChillis: user.chillis,
-      ConfiguredCharacters: character,
+      ConfiguredCharacters: character ?? defaultCharacter,
     });
   } catch (error) {
     res.status(401).send({ error: "get profile failed!" });
@@ -188,24 +289,26 @@ exports.getProfile = async (req, res) => {
 
 exports.chilliToToken = async (req, res) => {
   try {
-    const { convertAmount, network } = req.body;
     const user = await User.findOne({ publicAddress: req.user.publicAddress });
     console.log("user", req.user);
 
     let contract;
     let web3;
-    if (network == "ETH") {
-      contract = chilliEthContract;
-      web3 = web3ETH;
-    } else if (network == "Polygon") {
+    const network = process.env.NETWORK;
+    if (network == "Polygon") {
       contract = chilliPolygonContract;
       web3 = web3Polygon;
-    } else res.send.status(401).send({ message: "not supported network" });
+    } else {
+      contract = chilliEthContract;
+      web3 = web3ETH;
+    }
 
-    if (user.chillis > convertAmount) {
-      const tokenAmount = convertAmount * process.env.CONVERSION_RATE;
+    const minChilliConvert = parseInt(process.env.MIN_CHILLI_CONVERT);
+
+    if (user.chillis >= minChilliConvert) {
+      const tokenAmount = parseFloat(user.chillis * process.env.CONVERSION_RATE).toFixed(3);
       const decimal = await contract.methods.decimals().call();
-      const query = contract.methods.transfer(user.publicAddress, BigNumber.from(parseFloat("1e" + decimal).toString()).mul(tokenAmount));
+      const query = contract.methods.transfer(user.publicAddress, BigNumber.from(parseFloat("1e" + decimal).toString()).mul(BigNumber.from(tokenAmount * 1000)).div(1000));
       const encodedABI = query.encodeABI();
       const signedTransaction = await web3.eth.accounts.signTransaction(
         {
@@ -220,7 +323,7 @@ exports.chilliToToken = async (req, res) => {
         .sendSignedTransaction(signedTransaction.rawTransaction)
         .on("receipt", async (receipt) => {
           console.log(" transfer success:  " + receipt.blockHash);
-          await User.findOneAndUpdate({ publicAddress: req.user.publicAddress }, { chillis: user.chillis - convertAmount });
+          await User.findOneAndUpdate({ publicAddress: req.user.publicAddress }, { chillis: 0 });
           res.send({ data: { tokenAmount } });
         })
         .on("error", function (err) {
@@ -231,25 +334,6 @@ exports.chilliToToken = async (req, res) => {
     } else {
       res.send({ status: "collected chillis not enough" });
     }
-
-    //   public async send(sender: string, receiver: string, value: number, key: string)
-    //   // @ts-ignore: PromiEvent extends Promise
-    //   : PromiEvent<TransactionReceipt> {
-    //   const query = this.contract.methods.transfer(receiver, value);
-    //   const encodedABI = query.encodeABI();
-    //   const signedTx = await this.web3.eth.accounts.signTransaction(
-    //     {
-    //       data: encodedABI,
-    //       from: sender,
-    //       gas: 2000000,
-    //       to: this.contract.options.address,
-    //     },
-    //     key,
-    //     false,
-    //   );
-    //   // @ts-ignore: property exists
-    //   return this.web3.eth.sendSignedTransaction(signedTx.rawTransaction);
-    // }
   } catch (error) {
     res.status(401).send(error.message);
   }
