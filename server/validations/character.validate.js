@@ -9,7 +9,6 @@ const validate = (request) => {
           hairstyle: Joi.string().required().allow('', null),
           eyecolor: Joi.string().required().allow('', null),
           clothes: Joi.array().required().allow('', null),
-          accessories: Joi.array().required().allow('', null),
           goggles: Joi.string().required().allow('', null),
           headphones: Joi.string().required().allow('', null),
           backpack: Joi.string().required().allow('', null),

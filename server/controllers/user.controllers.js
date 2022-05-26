@@ -176,8 +176,6 @@ exports.getProfile = async (req, res) => {
       {
         clothes: [
         ],
-        accessories: [
-        ],
         bodytype: "boy",
         skintone: "",
         hairstyle: "",
@@ -194,8 +192,6 @@ exports.getProfile = async (req, res) => {
       {
         clothes: [
         ],
-        accessories: [
-        ],
         bodytype: "boy",
         skintone: "",
         hairstyle: "",
@@ -211,8 +207,6 @@ exports.getProfile = async (req, res) => {
       }, {
         clothes: [
         ],
-        accessories: [
-        ],
         bodytype: "boy",
         skintone: "",
         hairstyle: "",
@@ -227,8 +221,6 @@ exports.getProfile = async (req, res) => {
         headwear: ""
       }, {
         clothes: [
-        ],
-        accessories: [
         ],
         bodytype: "girl",
         skintone: "",
@@ -246,8 +238,6 @@ exports.getProfile = async (req, res) => {
       {
         clothes: [
         ],
-        accessories: [
-        ],
         bodytype: "girl",
         skintone: "",
         hairstyle: "",
@@ -262,8 +252,6 @@ exports.getProfile = async (req, res) => {
         headwear: ""
       }, {
         clothes: [
-        ],
-        accessories: [
         ],
         bodytype: "girl",
         skintone: "",

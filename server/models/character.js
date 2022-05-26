@@ -22,10 +22,6 @@ const subcharacterSchema = new mongoose.Schema({
     type: Array,
     default: []
   },
-  accessories: {
-    type: Array,
-    default: []
-  },
   goggles: {
     type: String,
     default: ""
@@ -67,8 +63,6 @@ const tableSchema = new mongoose.Schema({
       {
         clothes: [
         ],
-        accessories: [
-        ],
         bodytype: "boy",
         skintone: "",
         hairstyle: "",
@@ -85,8 +79,6 @@ const tableSchema = new mongoose.Schema({
       {
         clothes: [
         ],
-        accessories: [
-        ],
         bodytype: "boy",
         skintone: "",
         hairstyle: "",
@@ -102,8 +94,6 @@ const tableSchema = new mongoose.Schema({
       }, {
         clothes: [
         ],
-        accessories: [
-        ],
         bodytype: "boy",
         skintone: "",
         hairstyle: "",
@@ -118,8 +108,6 @@ const tableSchema = new mongoose.Schema({
         headwear: ""
       }, {
         clothes: [
-        ],
-        accessories: [
         ],
         bodytype: "girl",
         skintone: "",
@@ -137,8 +125,6 @@ const tableSchema = new mongoose.Schema({
       {
         clothes: [
         ],
-        accessories: [
-        ],
         bodytype: "girl",
         skintone: "",
         hairstyle: "",
@@ -153,8 +139,6 @@ const tableSchema = new mongoose.Schema({
         headwear: ""
       }, {
         clothes: [
-        ],
-        accessories: [
         ],
         bodytype: "girl",
         skintone: "",
