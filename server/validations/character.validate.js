@@ -14,7 +14,9 @@ const validate = (request) => {
           headphones: Joi.string().required().allow('', null),
           backpack: Joi.string().required().allow('', null),
           watch: Joi.string().required().allow('', null),
-          shoes: Joi.string().required().allow('', null)
+          shoes: Joi.string().required().allow('', null),
+          headwear: Joi.string().required().allow('', null),
+          bodytype: Joi.string().valid('boy','girl').required()
         })
       )
     })

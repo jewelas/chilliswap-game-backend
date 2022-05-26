@@ -188,7 +188,8 @@ exports.getProfile = async (req, res) => {
         headphones: "",
         backpack: "",
         watch: "",
-        shoes: ""
+        shoes: "",
+        headwear: ""
       },
       {
         clothes: [
@@ -205,7 +206,8 @@ exports.getProfile = async (req, res) => {
         headphones: "",
         backpack: "",
         watch: "",
-        shoes: ""
+        shoes: "",
+        headwear: ""
       }, {
         clothes: [
         ],
@@ -221,7 +223,8 @@ exports.getProfile = async (req, res) => {
         headphones: "",
         backpack: "",
         watch: "",
-        shoes: ""
+        shoes: "",
+        headwear: ""
       }, {
         clothes: [
         ],
@@ -237,7 +240,8 @@ exports.getProfile = async (req, res) => {
         headphones: "",
         backpack: "",
         watch: "",
-        shoes: ""
+        shoes: "",
+        headwear: ""
       },
       {
         clothes: [
@@ -254,7 +258,8 @@ exports.getProfile = async (req, res) => {
         headphones: "",
         backpack: "",
         watch: "",
-        shoes: ""
+        shoes: "",
+        headwear: ""
       }, {
         clothes: [
         ],
@@ -270,7 +275,8 @@ exports.getProfile = async (req, res) => {
         headphones: "",
         backpack: "",
         watch: "",
-        shoes: ""
+        shoes: "",
+        headwear: ""
       }
     ]
 
