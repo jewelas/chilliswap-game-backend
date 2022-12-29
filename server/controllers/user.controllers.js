@@ -28,8 +28,7 @@ exports.getUser = async (req, res) => {
       const newUser = new User({
         nonce: Math.floor(Math.random() * 1000000),
         publicAddress: publicAddress,
-        username: "", // later make a uniquie name
-        // email: '', // later make a uniquie name
+        username: "",
       });
       user = await newUser.save();
     }
@@ -174,8 +173,7 @@ exports.getProfile = async (req, res) => {
     const character = await Character.findOne({ userAddress: user.publicAddress });
     const defaultCharacter = [
       {
-        clothes: [
-        ],
+        clothes: [],
         bodytype: "boy",
         skintone: "",
         hairstyle: "",
@@ -187,11 +185,10 @@ exports.getProfile = async (req, res) => {
         backpack: "",
         watch: "",
         shoes: "",
-        headwear: ""
+        headwear: "",
       },
       {
-        clothes: [
-        ],
+        clothes: [],
         bodytype: "boy",
         skintone: "",
         hairstyle: "",
@@ -203,41 +200,25 @@ exports.getProfile = async (req, res) => {
         backpack: "",
         watch: "",
         shoes: "",
-        headwear: ""
-      }, {
-        clothes: [
-        ],
-        bodytype: "boy",
-        skintone: "",
-        hairstyle: "",
-        eyecolor: "",
-        updatedAt: "",
-        createdAt: "",
-        goggles: "",
-        headphones: "",
-        backpack: "",
-        watch: "",
-        shoes: "",
-        headwear: ""
-      }, {
-        clothes: [
-        ],
-        bodytype: "girl",
-        skintone: "",
-        hairstyle: "",
-        eyecolor: "",
-        updatedAt: "",
-        createdAt: "",
-        goggles: "",
-        headphones: "",
-        backpack: "",
-        watch: "",
-        shoes: "",
-        headwear: ""
+        headwear: "",
       },
       {
-        clothes: [
-        ],
+        clothes: [],
+        bodytype: "boy",
+        skintone: "",
+        hairstyle: "",
+        eyecolor: "",
+        updatedAt: "",
+        createdAt: "",
+        goggles: "",
+        headphones: "",
+        backpack: "",
+        watch: "",
+        shoes: "",
+        headwear: "",
+      },
+      {
+        clothes: [],
         bodytype: "girl",
         skintone: "",
         hairstyle: "",
@@ -249,10 +230,10 @@ exports.getProfile = async (req, res) => {
         backpack: "",
         watch: "",
         shoes: "",
-        headwear: ""
-      }, {
-        clothes: [
-        ],
+        headwear: "",
+      },
+      {
+        clothes: [],
         bodytype: "girl",
         skintone: "",
         hairstyle: "",
@@ -264,9 +245,24 @@ exports.getProfile = async (req, res) => {
         backpack: "",
         watch: "",
         shoes: "",
-        headwear: ""
-      }
-    ]
+        headwear: "",
+      },
+      {
+        clothes: [],
+        bodytype: "girl",
+        skintone: "",
+        hairstyle: "",
+        eyecolor: "",
+        updatedAt: "",
+        createdAt: "",
+        goggles: "",
+        headphones: "",
+        backpack: "",
+        watch: "",
+        shoes: "",
+        headwear: "",
+      },
+    ];
 
     return res.json({
       nftTokenIds: tokenIds,
@@ -302,7 +298,12 @@ exports.chilliToToken = async (req, res) => {
     if (user.chillis >= minChilliConvert) {
       const tokenAmount = parseFloat(user.chillis * process.env.CONVERSION_RATE).toFixed(3);
       const decimal = await contract.methods.decimals().call();
-      const query = contract.methods.transfer(user.publicAddress, BigNumber.from(parseFloat("1e" + decimal).toString()).mul(BigNumber.from(tokenAmount * 1000)).div(1000));
+      const query = contract.methods.transfer(
+        user.publicAddress,
+        BigNumber.from(parseFloat("1e" + decimal).toString())
+          .mul(BigNumber.from(tokenAmount * 1000))
+          .div(1000)
+      );
       const encodedABI = query.encodeABI();
       const signedTransaction = await web3.eth.accounts.signTransaction(
         {
